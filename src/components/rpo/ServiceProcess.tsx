@@ -105,38 +105,44 @@ const ServiceProcess = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  const next = useCallback(() => {
-    setActivePhase((prev) => (prev + 1) % PHASES.length);
-    setProgress(0);
-  }, []);
-
   const currentPhase = PHASES[activePhase];
   const steps = SERVICE_STEPS.filter((s) => s.phase === currentPhase);
 
+  // 自动切换到下一个阶段
+  const next = useCallback(() => {
+    setActivePhase((prev) => (prev + 1) % PHASES.length);
+  }, []);
+
+  // 处理进度条动画和自动切换
   useEffect(() => {
     if (isPaused) return;
 
+    // 重置进度
+    setProgress(0);
+
     const duration = PHASE_META[currentPhase].duration;
-    const interval = 50; // 每50ms更新一次进度
+    const interval = 50;
     const increment = (interval / duration) * 100;
+    let currentProgress = 0;
 
     const progressTimer = setInterval(() => {
-      setProgress((prev) => {
-        const next = prev + increment;
-        if (next >= 100) {
-          return 100;
-        }
-        return next;
-      });
+      currentProgress += increment;
+      if (currentProgress >= 100) {
+        setProgress(100);
+      } else {
+        setProgress(currentProgress);
+      }
     }, interval);
 
-    const phaseTimer = setTimeout(next, duration);
+    const phaseTimer = setTimeout(() => {
+      next();
+    }, duration);
 
     return () => {
       clearInterval(progressTimer);
       clearTimeout(phaseTimer);
     };
-  }, [isPaused, next, currentPhase]);
+  }, [activePhase, isPaused, currentPhase, next]);
 
   return (
     <section
@@ -170,7 +176,9 @@ const ServiceProcess = () => {
           {PHASES.map((phase, index) => (
             <button
               key={phase}
-              onClick={() => setActivePhase(index)}
+              onClick={() => {
+                setActivePhase(index);
+              }}
               className={`group relative px-[32px] py-[12px] rounded-lg text-base font-medium transition-all duration-500 ${
                 index === activePhase
                   ? 'bg-gradient-to-r from-[#4a83f2] to-[#2f6df6] text-white shadow-[0_4px_12px_rgba(74,131,242,0.25)]'
@@ -217,7 +225,6 @@ const ServiceProcess = () => {
               key={index}
               onClick={() => {
                 setActivePhase(index);
-                setProgress(0);
               }}
               className={`relative transition-all duration-500 ${
                 index === activePhase ? 'w-10' : 'w-3'
