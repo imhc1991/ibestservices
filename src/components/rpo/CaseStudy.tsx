@@ -6,7 +6,93 @@ const CASE_DATA = {
 const CaseStudy = () => {
   return (
     <section className="relative py-[90px] bg-gradient-to-b from-[#fafbff] via-white to-[#fafbff] overflow-hidden">
-      {/* 背景装饰 */}
+      {/* 背景 - 透视隧道网格 */}
+      <div className="absolute inset-0 overflow-hidden">
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="cs-clip-top">
+              <polygon points="0,0 1200,0 600,400" />
+            </clipPath>
+            <clipPath id="cs-clip-bottom">
+              <polygon points="0,800 1200,800 600,400" />
+            </clipPath>
+            <clipPath id="cs-clip-left">
+              <polygon points="0,0 0,800 600,400" />
+            </clipPath>
+            <clipPath id="cs-clip-right">
+              <polygon points="1200,0 1200,800 600,400" />
+            </clipPath>
+            <linearGradient id="cs-fade-top" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="rgba(74,131,242,0.14)" />
+              <stop offset="60%" stopColor="rgba(74,131,242,0.06)" />
+              <stop offset="100%" stopColor="rgba(74,131,242,0)" />
+            </linearGradient>
+            <linearGradient id="cs-fade-bottom" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stopColor="rgba(74,131,242,0.14)" />
+              <stop offset="60%" stopColor="rgba(74,131,242,0.06)" />
+              <stop offset="100%" stopColor="rgba(74,131,242,0)" />
+            </linearGradient>
+            <linearGradient id="cs-fade-left" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="rgba(74,131,242,0.12)" />
+              <stop offset="60%" stopColor="rgba(74,131,242,0.05)" />
+              <stop offset="100%" stopColor="rgba(74,131,242,0)" />
+            </linearGradient>
+            <linearGradient id="cs-fade-right" x1="1" y1="0" x2="0" y2="0">
+              <stop offset="0%" stopColor="rgba(74,131,242,0.12)" />
+              <stop offset="60%" stopColor="rgba(74,131,242,0.05)" />
+              <stop offset="100%" stopColor="rgba(74,131,242,0)" />
+            </linearGradient>
+          </defs>
+
+          <g clipPath="url(#cs-clip-top)">
+            {Array.from({ length: 18 }, (_, i) => {
+              const t = (i + 1) / 19;
+              const edgeX = t * 1200;
+              const centerX = 600 + (edgeX - 600) * 0.25;
+              return <line key={`t-${i}`} x1={edgeX} y1={0} x2={centerX} y2={400} stroke="url(#cs-fade-top)" strokeWidth="1" />;
+            })}
+          </g>
+
+          <g clipPath="url(#cs-clip-bottom)">
+            {Array.from({ length: 18 }, (_, i) => {
+              const t = (i + 1) / 19;
+              const edgeX = t * 1200;
+              const centerX = 600 + (edgeX - 600) * 0.25;
+              return <line key={`b-${i}`} x1={edgeX} y1={800} x2={centerX} y2={400} stroke="url(#cs-fade-bottom)" strokeWidth="1" />;
+            })}
+          </g>
+
+          <g clipPath="url(#cs-clip-left)">
+            {Array.from({ length: 12 }, (_, i) => {
+              const t = (i + 1) / 13;
+              const edgeY = t * 800;
+              const centerY = 400 + (edgeY - 400) * 0.25;
+              return <line key={`l-${i}`} x1={0} y1={edgeY} x2={600} y2={centerY} stroke="url(#cs-fade-left)" strokeWidth="1" />;
+            })}
+          </g>
+
+          <g clipPath="url(#cs-clip-right)">
+            {Array.from({ length: 12 }, (_, i) => {
+              const t = (i + 1) / 13;
+              const edgeY = t * 800;
+              const centerY = 400 + (edgeY - 400) * 0.25;
+              return <line key={`r-${i}`} x1={1200} y1={edgeY} x2={600} y2={centerY} stroke="url(#cs-fade-right)" strokeWidth="1" />;
+            })}
+          </g>
+
+          {Array.from({ length: 5 }, (_, i) => {
+            const scale = 1 - i * 0.16;
+            const x = 600 - (600 * scale);
+            const y = 400 - (400 * scale);
+            const w = 1200 * scale;
+            const h = 800 * scale;
+            const opacity = 0.12 - i * 0.02;
+            return <rect key={`rect-${i}`} x={x} y={y} width={w} height={h} fill="none" stroke={`rgba(74,131,242,${opacity})`} strokeWidth="1" rx="2" />;
+          })}
+        </svg>
+      </div>
+
+      {/* 原有背景装饰 */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#e8f2ff_0%,transparent_70%)]" />
 
       <div className="absolute top-[5%] left-[10%] w-2 h-2 rounded-full bg-[#4a83f2]/40 animate-pulse" />
