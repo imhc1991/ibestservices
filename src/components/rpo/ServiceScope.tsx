@@ -1,59 +1,56 @@
 import { Search, Users, Briefcase, Target, FileText, BarChart3, Map, Calendar, MoreHorizontal } from 'lucide-react';
 
-const SERVICE_SCOPE = [
+const CORE_SERVICES = [
   {
-    title: '招聘全流程精链人才推荐',
+    title: '招聘全流程',
+    sub: '精链人才推荐',
     icon: Search,
-    desc: '到场测试推荐精准匹配'
-  },
-  {
-    title: '到场测试推荐',
-    icon: Calendar,
-    desc: '现场评估候选人能力'
+    desc: '从需求定义到入职跟踪，全链路精准匹配与交付'
   },
   {
     title: 'RPO服务',
+    sub: '招聘流程外包',
     icon: Briefcase,
-    desc: '招聘流程外包定制方案'
+    desc: '招聘流程全托管，降低成本、提升效率'
   },
   {
     title: '猎头服务',
+    sub: '中高端人才寻访',
     icon: Target,
-    desc: '中高端人才定向寻访'
-  },
-  {
-    title: 'OFFER推荐',
-    icon: FileText,
-    desc: '薪酬方案设计与谈判'
-  },
-  {
-    title: '薪酬报告',
-    icon: BarChart3,
-    desc: '市场薪酬数据分析'
-  },
-  {
-    title: '人才地图',
-    icon: Map,
-    desc: '行业人才分布洞察'
-  },
-  {
-    title: '招聘团队驻场',
-    icon: Users,
-    desc: '专业团队现场支持'
-  },
-  {
-    title: '其他定制服务',
-    icon: MoreHorizontal,
-    desc: '灵活响应特殊需求'
+    desc: '定向寻访行业稀缺人才，精准触达高端候选人'
   }
+];
+
+const EXTENDED_SERVICES = [
+  { title: '到场面试速推', icon: Calendar },
+  { title: '到岗推荐', icon: Users },
+  { title: 'OFFER推荐', icon: FileText },
+  { title: '薪酬报告', icon: BarChart3 },
+  { title: '人才地图', icon: Map },
+  { title: '其他定制服务', icon: MoreHorizontal }
 ];
 
 const ServiceScope = () => {
   return (
     <section className="relative py-[90px] bg-white overflow-hidden">
-      {/* 背景装饰 */}
-      <div className="absolute top-[20%] right-[10%] w-[300px] h-[300px] rounded-full bg-[#4a83f2]/[0.02] blur-3xl" />
-      <div className="absolute bottom-[15%] left-[8%] w-[250px] h-[250px] rounded-full bg-[#f6c437]/[0.03] blur-3xl" />
+      {/* 背景 - 放射点阵 */}
+      <div className="absolute inset-0">
+        <svg className="absolute inset-0 w-full h-full opacity-[0.03]" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+          {Array.from({ length: 12 }, (_, row) =>
+            Array.from({ length: 16 }, (_, col) => {
+              const cx = col * 52 + 26;
+              const cy = row * 52 + 26;
+              const distFromCenter = Math.sqrt((cx - 400) ** 2 + (cy - 300) ** 2);
+              const r = Math.max(1, 3 - distFromCenter / 200);
+              return <circle key={`${row}-${col}`} cx={cx} cy={cy} r={r} fill="#4a83f2" />;
+            })
+          )}
+        </svg>
+      </div>
+
+      {/* 右上装饰弧 */}
+      <div className="absolute -top-[120px] -right-[120px] w-[400px] h-[400px] rounded-full border border-[#4a83f2]/[0.06]" />
+      <div className="absolute -top-[80px] -right-[80px] w-[320px] h-[320px] rounded-full border border-[#4a83f2]/[0.04]" />
 
       <div className="relative max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
         {/* 标题区 */}
@@ -70,43 +67,78 @@ const ServiceScope = () => {
           </p>
         </div>
 
-        {/* 3x3 网格 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[18px]">
-          {SERVICE_SCOPE.map((service, index) => {
+        {/* 核心服务 - 3 张大卡 */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-[18px] mb-[18px]">
+          {CORE_SERVICES.map((service, index) => {
             const Icon = service.icon;
             return (
-              <div
-                key={index}
-                className="group relative"
-                style={{ animation: `cardFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${index * 60}ms both` }}
-              >
-                <div className="relative h-full bg-white border border-[#e5e7eb] rounded-[8px] p-[24px] transition-all duration-400 hover:border-[#4a83f2] hover:-translate-y-1 hover:shadow-[0_4px_16px_rgba(74,131,242,0.08)] overflow-hidden">
-                  {/* 背景装饰数字 */}
-                  <div className="absolute -bottom-2 -right-2 text-[72px] font-bold text-[#4a83f2]/[0.02] leading-none select-none pointer-events-none" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+              <div key={index} className="group relative">
+                <div className="relative h-full bg-gradient-to-br from-[#fafbff] to-white border border-[#e5e7eb] rounded-[12px] p-[32px] transition-all duration-500 hover:border-[#4a83f2]/40 hover:-translate-y-1 overflow-hidden">
+                  {/* hover 顶部渐变 */}
+                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#4a83f2] to-[#2f6df6] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-t-[12px]" />
+
+                  {/* 序号水印 */}
+                  <div className="absolute -top-2 -right-2 text-[120px] font-bold text-[#4a83f2]/[0.03] leading-none select-none pointer-events-none transition-all duration-500 group-hover:text-[#4a83f2]/[0.06]">
                     {String(index + 1).padStart(2, '0')}
                   </div>
 
-                  {/* 图标 */}
-                  <div className="mb-[16px]">
-                    <div className="inline-flex items-center justify-center w-[48px] h-[48px] rounded-[8px] bg-[#4a83f2]/[0.08] transition-all duration-400 group-hover:bg-[#4a83f2] group-hover:scale-105">
-                      <Icon className="w-[24px] h-[24px] text-[#4a83f2] transition-colors duration-400 group-hover:text-white" strokeWidth={1.5} />
+                  {/* 图标 + 标签 */}
+                  <div className="flex items-center gap-[14px] mb-[20px]">
+                    <div className="w-[52px] h-[52px] rounded-[10px] bg-[#4a83f2]/[0.08] flex items-center justify-center transition-all duration-500 group-hover:bg-[#4a83f2] group-hover:rotate-6 group-hover:scale-105">
+                      <Icon className="w-[26px] h-[26px] text-[#4a83f2] transition-colors duration-500 group-hover:text-white" strokeWidth={1.5} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-[18px] font-semibold text-[#303133] leading-[22px] transition-colors duration-400 group-hover:text-[#4a83f2]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+                        {service.title}
+                      </h3>
+                      <span className="text-[13px] text-[#4a83f2]/60">{service.sub}</span>
                     </div>
                   </div>
 
-                  {/* 内容 */}
-                  <h3 className="text-[17px] font-semibold leading-[24px] text-[#303133] mb-[8px] transition-colors duration-400 group-hover:text-[#4a83f2]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-[#606266]/60 leading-[22px]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+                  {/* 描述 */}
+                  <p className="text-sm text-[#606266]/70 leading-[24px] max-w-[40ch]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
                     {service.desc}
                   </p>
 
-                  {/* 底部装饰条 */}
-                  <div className="mt-[16px] h-[2px] w-0 bg-[#4a83f2] transition-all duration-400 group-hover:w-full rounded-full" />
+                  {/* 底部装饰 */}
+                  <div className="flex items-center gap-[6px] mt-[20px]">
+                    <div className="h-[3px] w-[20px] rounded-full bg-[#4a83f2]/20 transition-all duration-400 group-hover:w-[32px] group-hover:bg-[#4a83f2]/60" />
+                    <div className="h-[3px] w-[12px] rounded-full bg-[#4a83f2]/10 transition-all duration-400 delay-75 group-hover:w-[20px] group-hover:bg-[#4a83f2]/40" />
+                    <div className="h-[3px] w-[8px] rounded-full bg-[#4a83f2]/5 transition-all duration-400 delay-150 group-hover:w-[14px] group-hover:bg-[#4a83f2]/25" />
+                  </div>
                 </div>
               </div>
             );
           })}
+        </div>
+
+        {/* 扩展服务 - 紧凑横排 */}
+        <div className="relative p-[1px] rounded-[12px] bg-gradient-to-r from-[#e5e7eb] via-[#4a83f2]/20 to-[#e5e7eb]">
+          <div className="bg-white rounded-[11px] p-[24px]">
+            <div className="flex items-center gap-2 mb-[18px]">
+              <span className="text-[13px] text-[#606266]/40 tracking-wider uppercase" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+                更多服务
+              </span>
+              <div className="flex-1 h-px bg-gradient-to-r from-[#e5e7eb] to-transparent" />
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[12px]">
+              {EXTENDED_SERVICES.map((service, index) => {
+                const Icon = service.icon;
+                return (
+                  <div
+                    key={index}
+                    className="group flex items-center gap-[10px] px-[16px] py-[14px] rounded-[8px] bg-[#f8faff] border border-transparent transition-all duration-300 hover:bg-white hover:border-[#4a83f2]/20 hover:-translate-y-0.5"
+                  >
+                    <Icon className="w-[18px] h-[18px] text-[#4a83f2]/50 flex-shrink-0 transition-colors duration-300 group-hover:text-[#4a83f2]" strokeWidth={1.5} />
+                    <span className="text-[14px] text-[#606266] transition-colors duration-300 group-hover:text-[#303133]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+                      {service.title}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>
