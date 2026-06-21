@@ -1,118 +1,112 @@
-import { Search, Users, Briefcase, Target } from 'lucide-react';
+import { Search, Users, Briefcase, Target, FileText, BarChart3, Map, Calendar, MoreHorizontal } from 'lucide-react';
 
 const SERVICE_SCOPE = [
   {
-    title: '招聘全流程',
+    title: '招聘全流程精链人才推荐',
     icon: Search,
-    desc: '从需求分析到入职全程托管',
-    accent: '#4a83f2'
+    desc: '到场测试推荐精准匹配'
   },
   {
-    title: '精链人才推荐',
-    icon: Target,
-    desc: '精准匹配高质量候选人',
-    accent: '#6366f1'
+    title: '到场测试推荐',
+    icon: Calendar,
+    desc: '现场评估候选人能力'
   },
   {
     title: 'RPO服务',
     icon: Briefcase,
-    desc: '招聘流程外包定制方案',
-    accent: '#0d9488'
+    desc: '招聘流程外包定制方案'
   },
   {
     title: '猎头服务',
+    icon: Target,
+    desc: '中高端人才定向寻访'
+  },
+  {
+    title: 'OFFER推荐',
+    icon: FileText,
+    desc: '薪酬方案设计与谈判'
+  },
+  {
+    title: '薪酬报告',
+    icon: BarChart3,
+    desc: '市场薪酬数据分析'
+  },
+  {
+    title: '人才地图',
+    icon: Map,
+    desc: '行业人才分布洞察'
+  },
+  {
+    title: '招聘团队驻场',
     icon: Users,
-    desc: '中高端人才定向寻访',
-    accent: '#f59e0b'
+    desc: '专业团队现场支持'
+  },
+  {
+    title: '其他定制服务',
+    icon: MoreHorizontal,
+    desc: '灵活响应特殊需求'
   }
 ];
 
 const ServiceScope = () => {
   return (
     <section className="relative py-[90px] bg-white overflow-hidden">
-      {/* 左侧大色块装饰 */}
-      <div className="absolute top-0 left-0 w-[40%] h-full bg-gradient-to-r from-[#f5f9ff] to-transparent" />
-
-      {/* 网格线背景 */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(#4a83f2 1px, transparent 1px), linear-gradient(90deg, #4a83f2 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+      {/* 背景装饰 */}
+      <div className="absolute top-[20%] right-[10%] w-[300px] h-[300px] rounded-full bg-[#4a83f2]/[0.02] blur-3xl" />
+      <div className="absolute bottom-[15%] left-[8%] w-[250px] h-[250px] rounded-full bg-[#f6c437]/[0.03] blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
-        {/* 标题区 - 左对齐风格 */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-[60px]">
-          <div>
-            <div className="flex items-center gap-3 mb-[14px]">
-              <div className="w-[4px] h-[28px] bg-gradient-to-b from-[#4a83f2] to-[#2f6df6] rounded-full" />
-              <h2 className="text-[24px] font-bold leading-[29px] text-[#303133]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
-                服务范围
-              </h2>
-            </div>
-            <p className="text-sm text-[#606266]/60 pl-[16px]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
-              四大核心服务能力，全方位覆盖企业招聘场景
-            </p>
+        {/* 标题区 */}
+        <div className="text-center mb-[54px]">
+          <div className="inline-flex items-center gap-3 mb-[18px]">
+            <div className="w-10 h-[2px] bg-gradient-to-r from-transparent to-[#4a83f2]" />
+            <h2 className="text-[24px] font-bold leading-[29px] text-[#303133]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+              服务范围
+            </h2>
+            <div className="w-10 h-[2px] bg-gradient-to-l from-transparent to-[#4a83f2]" />
           </div>
-
-          {/* 右侧装饰数字 */}
-          <div className="hidden lg:flex items-baseline gap-1 mt-4 lg:mt-0">
-            <span className="text-[64px] font-bold leading-none text-[#4a83f2]/[0.07]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>04</span>
-            <span className="text-sm text-[#606266]/30" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>项服务</span>
-          </div>
+          <p className="text-sm text-[#606266]/60" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+            九大核心服务能力，全方位覆盖企业招聘场景
+          </p>
         </div>
 
-        {/* 卡片区域 - 横向时间轴风格 */}
-        <div className="relative">
-          {/* 连接线 */}
-          <div className="hidden lg:block absolute top-[52px] left-[7%] right-[7%] h-px bg-gradient-to-r from-transparent via-[#4a83f2]/20 to-transparent" />
+        {/* 3x3 网格 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[18px]">
+          {SERVICE_SCOPE.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <div
+                key={index}
+                className="group relative"
+                style={{ animation: `cardFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${index * 60}ms both` }}
+              >
+                <div className="relative h-full bg-white border border-[#e5e7eb] rounded-[8px] p-[24px] transition-all duration-400 hover:border-[#4a83f2] hover:-translate-y-1 hover:shadow-[0_4px_16px_rgba(74,131,242,0.08)] overflow-hidden">
+                  {/* 背景装饰数字 */}
+                  <div className="absolute -bottom-2 -right-2 text-[72px] font-bold text-[#4a83f2]/[0.02] leading-none select-none pointer-events-none" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[20px] lg:gap-[28px]">
-            {SERVICE_SCOPE.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <div key={index} className="group relative flex flex-col items-center text-center">
-                  {/* 顶部圆形图标节点 */}
-                  <div className="relative z-10 mb-[24px]">
-                    {/* 外圈 */}
-                    <div
-                      className="w-[104px] h-[104px] rounded-full border-2 border-dashed flex items-center justify-center transition-all duration-500 group-hover:border-solid group-hover:scale-105"
-                      style={{ borderColor: `${service.accent}30` }}
-                    >
-                      {/* 内圈 */}
-                      <div
-                        className="w-[76px] h-[76px] rounded-full flex items-center justify-center transition-all duration-500 group-hover:shadow-[0_0_24px_rgba(74,131,242,0.2)]"
-                        style={{ background: `linear-gradient(135deg, ${service.accent}12, ${service.accent}06)`, border: `1.5px solid ${service.accent}25` }}
-                      >
-                        <Icon
-                          className="w-7 h-7 transition-all duration-500 group-hover:scale-110"
-                          style={{ color: service.accent }}
-                          strokeWidth={1.5}
-                        />
-                      </div>
-                    </div>
-
-                    {/* 序号角标 */}
-                    <div
-                      className="absolute -top-1 -right-1 w-[30px] h-[30px] rounded-full flex items-center justify-center text-white text-sm font-bold transition-transform duration-300 group-hover:scale-110"
-                      style={{ background: `linear-gradient(135deg, ${service.accent}, ${service.accent}cc)` }}
-                    >
-                      {index + 1}
+                  {/* 图标 */}
+                  <div className="mb-[16px]">
+                    <div className="inline-flex items-center justify-center w-[48px] h-[48px] rounded-[8px] bg-[#4a83f2]/[0.08] transition-all duration-400 group-hover:bg-[#4a83f2] group-hover:scale-105">
+                      <Icon className="w-[24px] h-[24px] text-[#4a83f2] transition-colors duration-400 group-hover:text-white" strokeWidth={1.5} />
                     </div>
                   </div>
 
-                  {/* 内容区 */}
-                  <div className="relative w-full px-[16px] py-[24px] border border-[#e5e7eb] rounded-[10px] bg-white transition-all duration-400 group-hover:border-[#4a83f2]/30 group-hover:bg-[#fafbff]">
-                    {/* 顶部三角指示 */}
-                    <div className="absolute -top-[7px] left-1/2 -translate-x-1/2 w-[12px] h-[12px] rotate-45 border-l border-t border-[#e5e7eb] bg-white transition-all duration-400 group-hover:border-[#4a83f2]/30 group-hover:bg-[#fafbff]" />
+                  {/* 内容 */}
+                  <h3 className="text-[17px] font-semibold leading-[24px] text-[#303133] mb-[8px] transition-colors duration-400 group-hover:text-[#4a83f2]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-[#606266]/60 leading-[22px]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+                    {service.desc}
+                  </p>
 
-                    <h3 className="text-[17px] font-semibold leading-[24px] text-[#303133] mb-[10px] transition-colors duration-400 group-hover:text-[#4a83f2]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-[#606266]/60 leading-[22px]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
-                      {service.desc}
-                    </p>
-                  </div>
+                  {/* 底部装饰条 */}
+                  <div className="mt-[16px] h-[2px] w-0 bg-[#4a83f2] transition-all duration-400 group-hover:w-full rounded-full" />
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
