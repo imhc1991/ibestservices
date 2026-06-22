@@ -3,21 +3,27 @@ import { Clock, CreditCard, Calendar, Shield } from 'lucide-react';
 const COMMITMENTS = [
   {
     title: '简历推荐',
-    content: '24小时内推荐符合要求的候选人简历',
+    metric: '24h',
+    content: '内推荐符合客户要求的候选人简历',
     icon: Clock
   },
   {
     title: '付款方式',
-    content: '0预付款，过保后收费',
+    metric: '0',
+    unit: '预付款',
+    content: '过保后收费，零风险合作',
     icon: CreditCard
   },
   {
     title: '面试安排',
-    content: '1-2个工作日内完成候选人面试安排',
+    metric: '1-2',
+    unit: '工作日',
+    content: '内完成候选人面试安排',
     icon: Calendar
   },
   {
     title: '保质期',
+    metric: '灵活',
     content: '可根据客户实际需求具体协商确定',
     icon: Shield
   }
@@ -25,41 +31,56 @@ const COMMITMENTS = [
 
 const Commitment = () => {
   return (
-    <section className="relative py-[54px] bg-white overflow-hidden">
-      <div className="absolute top-[15%] left-[5%] w-28 h-28 rounded-full bg-gradient-to-br from-[#4a83f2]/4 to-transparent" />
-      <div className="absolute bottom-[10%] right-[8%] w-20 h-20 rounded-full bg-gradient-to-tl from-[#2f6df6]/4 to-transparent" />
+    <section className="relative py-[96px] bg-[#f8faff] overflow-hidden">
+      <div className="relative max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-[24px] font-bold leading-[29px] text-[#606266] mb-[26px] text-center">
-          我们承诺
-        </h2>
+        {/* Section 标题 */}
+        <div className="mb-[56px]">
+          <div className="text-[11px] text-[#A0A0A0] tracking-[0.12em] uppercase mb-[12px] font-medium" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+            Our Commitment
+          </div>
+          <h2 className="text-[28px] font-semibold leading-[1.15] text-[#303133] mb-[12px]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif', fontWeight: 600 }}>
+            我们承诺
+          </h2>
+          <p className="text-[15px] text-[#606266] leading-[1.7] max-w-[560px]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+            明确的服务标准，可靠的交付保障
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[18px]">
+        {/* 承诺网格 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[20px]">
           {COMMITMENTS.map((commitment, index) => {
             const Icon = commitment.icon;
             return (
               <div key={index} className="group">
-                <div className="relative h-full border border-gray-200 rounded-[8px] p-[26px] bg-white transition-all duration-300 hover:border-[#4a83f2] hover:-translate-y-1 overflow-hidden">
-                  {/* 顶部装饰线 */}
-                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#4a83f2]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="h-full bg-white border border-[#e5e7eb] rounded-[12px] p-[32px] transition-all duration-250 hover:border-[#4a83f2]/50">
 
-                  {/* 图标 */}
-                  <div className="w-12 h-12 rounded-[8px] bg-gradient-to-br from-[#4a83f2]/10 to-[#2f6df6]/5 flex items-center justify-center mb-[18px] group-hover:from-[#4a83f2] group-hover:to-[#2f6df6] transition-all duration-300">
-                    <Icon className="w-5 h-5 text-[#4a83f2] group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
+                  {/* Icon */}
+                  <div className="w-[40px] h-[40px] rounded-[8px] bg-[#4a83f2]/[0.06] flex items-center justify-center mb-[20px]">
+                    <Icon className="w-[20px] h-[20px] text-[#4a83f2]" strokeWidth={1.5} />
                   </div>
 
-                  <h3 className="text-[20px] font-semibold leading-[24px] text-[#606266] mb-[10px]">
+                  {/* 量化承诺 — 视觉锚点 */}
+                  <div className="flex items-baseline gap-[4px] mb-[6px]">
+                    <span className="text-[28px] font-semibold text-[#303133] leading-none tracking-tight" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif', fontWeight: 600 }}>
+                      {commitment.metric}
+                    </span>
+                    {'unit' in commitment && (
+                      <span className="text-[13px] text-[#606266] font-medium" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+                        {commitment.unit}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* 标题 */}
+                  <h3 className="text-[14px] font-semibold text-[#303133] leading-[1.3] mb-[8px]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif', fontWeight: 600 }}>
                     {commitment.title}
                   </h3>
-                  <p className="text-base text-[#606266]/70 leading-[1.8]">
+
+                  {/* 描述 */}
+                  <p className="text-[13px] text-[#606266]/80 leading-[1.7]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
                     {commitment.content}
                   </p>
-
-                  {/* 底部装饰 */}
-                  <div className="flex items-center gap-[6px] mt-[18px]">
-                    <div className="w-[6px] h-[6px] rounded-full bg-[#4a83f2]/25 group-hover:bg-[#4a83f2] transition-colors duration-300" />
-                    <div className="w-[4px] h-[4px] rounded-full bg-[#4a83f2]/15 group-hover:bg-[#4a83f2]/60 transition-colors duration-300" />
-                  </div>
                 </div>
               </div>
             );
