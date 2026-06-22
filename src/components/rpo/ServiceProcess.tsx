@@ -2,10 +2,10 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import type { ServiceStep } from '../../types/rpo';
 
 const SERVICE_STEPS: ServiceStep[] = [
-  { id: 1, phase: '前期准备', title: '百得思维RPO服务简介', description: '向客户初步介绍百得思维的核心招聘行业与领域，专业交付团队及行业与领域，并说明服务流程、收费标准及合同条款。' },
-  { id: 2, phase: '前期准备', title: '深度沟通，整理需求', description: '与客户招聘对接人进行一对一沟通，记录并分析客户的阶段性招聘计划，空缺岗位需求，以及客户对岗位的招聘评估要点。' },
-  { id: 3, phase: '前期准备', title: '项目评估，系统分析', description: '对客户公司业绩及业务服务现状进行摸底与分析，评估空缺岗位的可操作性，结合现有资源进行匹配，判断项目目标可实现性的达成程度。' },
-  { id: 4, phase: '前期准备', title: '签订协议，明确收费', description: '双方协商并签订《招聘委托协议》，明确约定"三期"（含洽谈期、保护期、质保期）及付费方式和缴费节点。' },
+  { id: 1, phase: '前期', title: '百得思维RPO服务简介', description: '向客户初步介绍百得思维的核心招聘行业与领域，专业交付团队及行业与领域，并说明服务流程、收费标准及合同条款。' },
+  { id: 2, phase: '前期', title: '深度沟通，整理需求', description: '与客户招聘对接人进行一对一沟通，记录并分析客户的阶段性招聘计划，空缺岗位需求，以及客户对岗位的招聘评估要点。' },
+  { id: 3, phase: '前期', title: '项目评估，系统分析', description: '对客户公司业绩及业务服务现状进行摸底与分析，评估空缺岗位的可操作性，结合现有资源进行匹配，判断项目目标可实现性的达成程度。' },
+  { id: 4, phase: '前期', title: '签订协议，明确收费', description: '双方协商并签订《招聘委托协议》，明确约定"三期"（含洽谈期、保护期、质保期）及付费方式和缴费节点。' },
   { id: 5, phase: '前期', title: '职位访谈，薪酬建议', description: '深入了解客户公司的所属行业、企业文化、经营状况，以及招聘岗位的薪酬待遇、工作职责、组织架构、汇报关系等。' },
   { id: 6, phase: '前期', title: '职位分析，人才画像', description: '基于职位访谈数据和信息进行职位分析，构建胜任岗位的"人才画像"，提炼岗位关键词，明确目标行业及人才分布区域。' },
   { id: 7, phase: '前期', title: '制定方案，寻访启动', description: '招聘团队依据职位信息及客户诉求，制定差异岗位的人才寻访方案，发布职位信息、组建交付项目组，并正式启动人才寻访工作。' },
@@ -33,7 +33,7 @@ const ServiceProcess = () => {
   const debounceRef = useRef<number>(0);
 
   const currentPhase = PHASES[activePhase];
-  const steps = SERVICE_STEPS.filter((s) => s.phase === currentPhase);
+  const steps = getStepsForPhase(activePhase);
 
   const handleScroll = useCallback(() => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
@@ -75,25 +75,31 @@ const ServiceProcess = () => {
 
   return (
     <div ref={containerRef} className="relative" style={{ height: '400vh' }}>
-      <section className="sticky top-0 h-screen bg-gradient-to-b from-white via-[#fafbff] to-[#f5f9ff]">
+      <section className="sticky top-0 h-screen bg-gradient-to-b from-white via-[#fafbff] to-[#f5f9ff] overflow-hidden">
         {/* 背景装饰 */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,#e8f2ff_0%,transparent_50%)]" />
-        <div className="absolute top-[10%] right-[8%] w-64 h-64 rounded-full bg-gradient-to-br from-[#4a83f2]/6 to-transparent blur-3xl" />
-        <div className="absolute bottom-[20%] left-[5%] w-56 h-56 rounded-full bg-gradient-to-tl from-[#2f6df6]/5 to-transparent blur-3xl" />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 20% 30%, rgba(232,242,255,1) 0%, rgba(232,242,255,0) 50%)' }} />
+        <div className="absolute top-[104px] right-[152px] w-[256px] h-[256px] rounded-full blur-[32px]" style={{ backgroundImage: 'linear-gradient(135deg, rgba(74,131,242,0.06) 0%, rgba(74,131,242,0) 100%)' }} />
+        <div className="absolute bottom-[208px] left-[95px] w-[224px] h-[224px] rounded-full blur-[32px]" style={{ backgroundImage: 'linear-gradient(-45deg, rgba(47,109,246,0.05) 0%, rgba(47,109,246,0) 100%)' }} />
 
-        <div className="relative h-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 flex flex-col">
+        <div className="relative h-full max-w-[1280px] mx-auto px-[64px] flex flex-col">
           {/* 标题区 */}
-          <div className="text-center pt-16 pb-8">
-            <div className="inline-flex items-center gap-3 mb-[18px]">
-              <div className="w-10 h-[2px] bg-gradient-to-r from-transparent to-[#4a83f2]" />
-              <h2 className="text-[24px] font-bold leading-[29px] text-[#303133]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+          <div className="flex items-center justify-center pt-[64px] pb-[32px]">
+            <img src="/images/common/title-deco-left.png" alt="" className="w-[112px] h-[21px]" />
+            <div className="flex flex-col items-center mx-4">
+              <h2
+                className="text-[32px] font-semibold leading-[38px] text-[#303133] mb-[13px]"
+                style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+              >
                 服务流程
               </h2>
-              <div className="w-10 h-[2px] bg-gradient-to-l from-transparent to-[#4a83f2]" />
+              <p
+                className="text-[16px] text-[#606266]/60 leading-[20px]"
+                style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+              >
+                14步完整服务流程，全方位保障招聘质量
+              </p>
             </div>
-            <p className="text-sm text-[#606266]/60" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
-              14步完整服务流程，全方位保障招聘质量
-            </p>
+            <img src="/images/common/title-deco-right.png" alt="" className="w-[112px] h-[21px]" />
           </div>
 
           {/* 移动端：顶部横向指示器 */}
@@ -114,7 +120,7 @@ const ServiceProcess = () => {
           </div>
 
           {/* 桌面端：左右分栏 */}
-          <div className="hidden md:flex flex-1 gap-12 min-h-0">
+          <div className="hidden md:flex flex-1 gap-[48px] min-h-0">
             {/* 左侧：阶段进度指示器 */}
             <nav className="flex-shrink-0 w-[180px] flex flex-col justify-center">
               <div className="relative">
@@ -126,7 +132,7 @@ const ServiceProcess = () => {
                   style={{ height: `${(activePhase / (PHASES.length - 1)) * (100 - (48 / 3))}%` }}
                 />
 
-                <div className="relative flex flex-col gap-10">
+                <div className="relative flex flex-col gap-[40px]">
                   {PHASES.map((phase, index) => {
                     const isActive = index === activePhase;
                     const isPast = index < activePhase;
@@ -142,28 +148,23 @@ const ServiceProcess = () => {
                             ? 'border-[#4a83f2] bg-[#4a83f2]'
                             : isPast
                               ? 'border-[#4a83f2] bg-white'
-                              : 'border-[#e5e7eb] bg-white'
+                              : 'border-[#4a83f2] bg-white'
                         }`}>
                           {isActive && (
-                            <div className="absolute inset-[4px] rounded-full bg-white" />
-                          )}
-                          {isPast && (
-                            <div className="absolute inset-[5px] rounded-full bg-[#4a83f2]" />
+                            <div className="absolute inset-[6px] rounded-full bg-white" />
                           )}
                         </div>
 
                         {/* 文字 */}
                         <div className="flex flex-col">
-                          <span className={`text-base font-medium transition-all duration-400 ${
+                          <span className={`text-[16px] font-medium leading-[24px] transition-all duration-400 ${
                             isActive
                               ? 'text-[#4a83f2]'
-                              : isPast
-                                ? 'text-[#303133]'
-                                : 'text-[#606266]/40'
-                          }`} style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+                              : 'text-[#303133]'
+                          }`} style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
                             {phase}阶段
                           </span>
-                          <span className={`text-xs mt-1 transition-all duration-400 ${
+                          <span className={`text-[12px] leading-[16px] mt-1 transition-all duration-400 ${
                             isActive ? 'text-[#4a83f2]/70' : 'text-[#606266]/30'
                           }`}>
                             步骤 {PHASE_META[phase].steps}
@@ -183,10 +184,7 @@ const ServiceProcess = () => {
                 className="w-full"
                 style={{ animation: 'phaseSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both' }}
               >
-                {currentPhase === '前期准备' && <BentoEarly steps={steps} />}
-                {currentPhase === '前期' && <BentoPrep steps={steps} />}
-                {currentPhase === '中期' && <BentoMid steps={steps} />}
-                {currentPhase === '后期' && <BentoLate steps={steps} />}
+                <BentoGrid steps={steps} phaseIndex={activePhase} />
               </div>
             </div>
           </div>
@@ -198,10 +196,7 @@ const ServiceProcess = () => {
               className="w-full"
               style={{ animation: 'phaseSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both' }}
             >
-              {currentPhase === '前期准备' && <BentoEarly steps={steps} />}
-              {currentPhase === '前期' && <BentoPrep steps={steps} />}
-              {currentPhase === '中期' && <BentoMid steps={steps} />}
-              {currentPhase === '后期' && <BentoLate steps={steps} />}
+              <BentoGrid steps={steps} phaseIndex={activePhase} />
             </div>
           </div>
         </div>
@@ -210,86 +205,68 @@ const ServiceProcess = () => {
   );
 };
 
-/* ─── Bento: 前期准备 4步 ─── */
-function BentoEarly({ steps }: { steps: ServiceStep[] }) {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-[18px]">
-      <Card step={steps[0]} className="md:row-span-2" large delay={0} />
-      <Card step={steps[1]} delay={80} />
-      <Card step={steps[2]} delay={160} />
-      <Card step={steps[3]} className="md:col-span-2" delay={240} />
-    </div>
-  );
+function getStepsForPhase(phaseIndex: number): ServiceStep[] {
+  if (phaseIndex === 0) return SERVICE_STEPS.slice(0, 4);
+  if (phaseIndex === 1) return SERVICE_STEPS.slice(4, 8);
+  if (phaseIndex === 2) return SERVICE_STEPS.slice(8, 12);
+  return SERVICE_STEPS.slice(12, 14);
 }
 
-/* ─── Bento: 前期 4步 ─── */
-function BentoPrep({ steps }: { steps: ServiceStep[] }) {
+/* ─── Bento Grid ─── */
+function BentoGrid({ steps, phaseIndex }: { steps: ServiceStep[]; phaseIndex: number }) {
+  if (phaseIndex === 0) {
+    // 前期准备: 3列，第1列跨2行，第4张卡片跨2-3列
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-[18px] md:grid-rows-[186px_120px]">
+        <Card step={steps[0]} className="md:row-span-2" />
+        <Card step={steps[1]} />
+        <Card step={steps[2]} />
+        <Card step={steps[3]} className="md:col-span-2" />
+      </div>
+    );
+  }
+  // 其他阶段: 2列均匀分布
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-[18px]">
-      <Card step={steps[0]} large delay={0} />
-      <Card step={steps[1]} large delay={80} />
-      <Card step={steps[2]} large delay={160} />
-      <Card step={steps[3]} large delay={240} />
-    </div>
-  );
-}
-
-/* ─── Bento: 中期 4步 ─── */
-function BentoMid({ steps }: { steps: ServiceStep[] }) {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-[18px]">
-      <Card step={steps[0]} large delay={0} />
-      <Card step={steps[1]} large delay={80} />
-      <Card step={steps[2]} large delay={160} />
-      <Card step={steps[3]} large delay={240} />
-    </div>
-  );
-}
-
-/* ─── Bento: 后期 2步 ─── */
-function BentoLate({ steps }: { steps: ServiceStep[] }) {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-[18px]">
-      <Card step={steps[0]} large delay={0} />
-      <Card step={steps[1]} large delay={80} />
+      {steps.map((step) => (
+        <Card key={step.id} step={step} />
+      ))}
     </div>
   );
 }
 
 /* ─── 卡片 ─── */
-function Card({ step, className = '', large = false, delay = 0 }: {
-  step: ServiceStep;
-  className?: string;
-  large?: boolean;
-  delay?: number;
-}) {
+function Card({ step, className = '' }: { step: ServiceStep; className?: string }) {
   return (
-    <div
-      className={`group relative ${className}`}
-      style={{ animation: `cardFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms both` }}
-    >
-      <div className={`relative h-full bg-white/80 backdrop-blur-sm border border-[#e5e7eb] rounded-[8px] ${large ? 'p-[28px]' : 'p-[22px]'} transition-all duration-500 hover:border-[#4a83f2] hover:-translate-y-1 hover:shadow-[0_4px_16px_rgba(74,131,242,0.08)] overflow-hidden`}>
-        {/* 背景序号水印 */}
-        <div className="absolute -bottom-4 -right-4 text-[80px] font-bold text-[#4a83f2]/[0.03] leading-none select-none pointer-events-none transition-all duration-500 group-hover:text-[#4a83f2]/[0.06]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
-          {String(step.id).padStart(2, '0')}
-        </div>
-
+    <div className={`group ${className}`}>
+      <div className="relative h-full backdrop-blur-[4px] border border-white rounded-[8px] pt-[25px] pb-[21px] px-[25px] overflow-hidden transition-all duration-500 hover:-translate-y-1"
+        style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.16))' }}
+      >
         {/* 顶部装饰线 */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#4a83f2] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-[8px]" />
 
-        <div className="relative flex items-start gap-[14px]">
+        <div className="flex items-start gap-[14px]">
           {/* 序号徽章 */}
-          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#4a83f2] flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-            <span className="text-[14px] font-bold text-white" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+          <div className="flex-shrink-0 w-10 h-10 rounded-[8px] bg-[#4a83f2] flex items-center justify-center">
+            <span
+              className="text-[14px] font-semibold text-white leading-[21px]"
+              style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+            >
               {String(step.id).padStart(2, '0')}
             </span>
           </div>
 
-          <div className="flex-1 space-y-[8px]">
-            <h3 className="text-[18px] font-semibold leading-[22px] text-[#303133] transition-colors duration-500 group-hover:text-[#4a83f2]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+          <div className="flex-1 flex flex-col gap-[8px]">
+            <h3
+              className="text-[18px] font-semibold leading-[22px] text-[#303133] transition-colors duration-500 group-hover:text-[#4a83f2]"
+              style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+            >
               {step.title}
             </h3>
-            <p className="text-sm text-[#606266]/70 leading-[22px]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+            <p
+              className="text-[14px] text-[#606266]/70 leading-[22px]"
+              style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+            >
               {step.description}
             </p>
           </div>
