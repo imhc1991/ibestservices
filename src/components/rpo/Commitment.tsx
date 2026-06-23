@@ -70,7 +70,7 @@ const Commitment = () => {
                     >
                       {item.metric}
                     </span>
-                    {item.unit && (
+                    {'unit' in item && item.unit && (
                       <span
                         className="text-[13px] font-medium leading-[19.5px] text-[#606266] ml-[3px]"
                         style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}

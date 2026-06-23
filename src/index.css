@@ -7,6 +7,16 @@
   --color-neutral: #606266;
   --font-sans: PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif;
   --animate-fadeIn: fadeIn 0.4s ease-out;
+  --animate-marquee: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-25%);
+  }
 }
 
 @keyframes fadeIn {

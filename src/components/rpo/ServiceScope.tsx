@@ -48,12 +48,95 @@ const SERVICES = [
     icon: '/images/ServiceScope/icon-8.png'
   },
   {
-    title: '其他定制服务',
-    subtitle: '灵活定制',
-    description: '根据企业需求提供定制化招聘解决方案',
+    title: '精链人才推荐',
+    subtitle: '精准链接',
+    description: '整合行业资源，精准链接高匹配度人才',
     icon: '/images/ServiceScope/icon-9.png'
   }
 ] as const;
+
+// 第一行：前5个卡片，从右向左滚动
+const ROW_1 = SERVICES.slice(0, 5);
+// 第二行：后4个卡片，从左向右滚动
+const ROW_2 = SERVICES.slice(5, 9);
+
+const MarqueeRow = ({
+  items,
+  reverse = false
+}: {
+  items: typeof SERVICES[number][];
+  reverse?: boolean;
+}) => {
+  // 复制多份以实现无缝循环
+  const duplicated = [...items, ...items, ...items, ...items];
+
+  return (
+    <div
+      className="group/marquee relative flex overflow-hidden"
+      style={{ '--marquee-gap': '12px' } as React.CSSProperties}
+    >
+      {/* 左侧渐隐遮罩 */}
+      <div className="absolute left-0 top-0 bottom-0 w-[48px] z-10 pointer-events-none bg-gradient-to-r from-[#f8faff] to-transparent" />
+      {/* 右侧渐隐遮罩 */}
+      <div className="absolute right-0 top-0 bottom-0 w-[48px] z-10 pointer-events-none bg-gradient-to-l from-[#f8faff] to-transparent" />
+
+      <div
+        className={`flex gap-[var(--marquee-gap)] animate-marquee group-hover/marquee:[animation-play-state:paused] ${reverse ? '[animation-direction:reverse]' : ''}`}
+        style={{ paddingRight: 'var(--marquee-gap)' }}
+      >
+        {duplicated.map((service, index) => (
+          <ServiceCard key={`${service.title}-${index}`} service={service} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const ServiceCard = ({ service }: { service: typeof SERVICES[number] }) => {
+  return (
+    <div className="group/card flex-shrink-0 w-[260px]">
+      <div className="relative h-[180px] bg-gradient-to-b from-[#f1f6ff] via-white to-white border border-[#e5e7eb] rounded-[12px] p-[24px] flex flex-col gap-[4px] transition-all duration-500 hover:border-[#4a83f2]/40 overflow-hidden">
+        {/* hover 顶部渐变条 */}
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#4a83f2] to-[#2f6df6] scale-x-0 group-hover/card:scale-x-100 transition-transform duration-500 origin-left rounded-t-[12px]" />
+
+        {/* 图标 */}
+        <div className="w-[40px] h-[40px] relative transition-transform duration-500 group-hover/card:scale-110">
+          <img src={service.icon} alt="" className="w-full h-full" />
+        </div>
+
+        {/* 标题 */}
+        <div className="pt-[10px]">
+          <h3
+            className="text-[16px] font-semibold leading-[20px] text-[#303133] transition-colors duration-400 group-hover/card:text-[#4a83f2]"
+            style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+          >
+            {service.title}
+          </h3>
+        </div>
+
+        {/* 副标题 */}
+        <div>
+          <p
+            className="text-[11px] leading-[16px] tracking-[0.22px] text-[#4a83f2]"
+            style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+          >
+            {service.subtitle}
+          </p>
+        </div>
+
+        {/* 描述 */}
+        <div className="pt-[4px]">
+          <p
+            className="text-[12px] leading-[20px] text-[#606266]/80"
+            style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+          >
+            {service.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const ServiceScope = () => {
   return (
@@ -78,53 +161,12 @@ const ServiceScope = () => {
           </div>
           <img src="/images/common/title-deco-right.png" alt="" className="w-[112px] h-[21px]" />
         </div>
+      </div>
 
-        {/* 服务网格 */}
-        <div className="grid grid-cols-3 gap-[20px]">
-          {SERVICES.map((service, index) => (
-            <div key={index} className="group flex flex-col">
-              <div className="relative h-[213px] bg-gradient-to-b from-[#f1f6ff] via-white to-white border border-[#e5e7eb] rounded-[12px] p-[33px] flex flex-col gap-[6px] transition-all duration-500 hover:border-[#4a83f2]/40 hover:-translate-y-1 overflow-hidden">
-                {/* hover 顶部渐变条 */}
-                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#4a83f2] to-[#2f6df6] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-t-[12px]" />
-
-                {/* 图标 */}
-                <div className="w-[48px] h-[48px] relative transition-transform duration-500 group-hover:scale-105">
-                  <img src={service.icon} alt="" className="w-full h-full" />
-                </div>
-
-                {/* 标题 */}
-                <div className="pt-[14px]">
-                  <h3
-                    className="text-[18px] font-semibold leading-[20.8px] text-[#303133] transition-colors duration-400 group-hover:text-[#4a83f2]"
-                    style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
-                  >
-                    {service.title}
-                  </h3>
-                </div>
-
-                {/* 副标题 */}
-                <div>
-                  <p
-                    className="text-[11px] leading-[16.5px] tracking-[0.22px] text-[#4a83f2]"
-                    style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
-                  >
-                    {service.subtitle}
-                  </p>
-                </div>
-
-                {/* 描述 */}
-                <div className="pt-[7.25px]">
-                  <p
-                    className="text-[13px] leading-[22.1px] text-[#606266]/80"
-                    style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
-                  >
-                    {service.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* Marquee 滚动区域 */}
+      <div className="max-w-[1280px] mx-auto px-[64px] flex flex-col gap-[12px]">
+        <MarqueeRow items={[...ROW_1]} />
+        <MarqueeRow items={[...ROW_2]} reverse />
       </div>
     </section>
   );
