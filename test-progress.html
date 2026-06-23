@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Progress Test</title>
+</head>
+<body>
+  <h1>Testing progress logic</h1>
+  <script>
+    // 模拟逻辑
+    const PHASES = ['前期准备', '前期', '中期', '后期'];
+    const PHASE_META = {
+      '前期准备': { duration: 8000 },
+      '前期': { duration: 8000 },
+      '中期': { duration: 8000 },
+      '后期': { duration: 6000 }
+    };
+    
+    let activePhase = 0;
+    let currentPhase = PHASES[activePhase];
+    
+    console.log('Initial phase:', currentPhase);
+    console.log('Duration:', PHASE_META[currentPhase].duration);
+    
+    // 模拟点击第二个标签
+    activePhase = 1;
+    currentPhase = PHASES[activePhase];
+    console.log('After click phase 1:', currentPhase);
+    console.log('Duration:', PHASE_META[currentPhase].duration);
+    
+    // 模拟点击第三个标签
+    activePhase = 2;
+    currentPhase = PHASES[activePhase];
+    console.log('After click phase 2:', currentPhase);
+    console.log('Duration:', PHASE_META[currentPhase].duration);
+  </script>
+</body>
+</html>

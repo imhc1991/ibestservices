@@ -5,7 +5,7 @@ const CASE_STUDY = {
 
 const CaseStudy = () => {
   return (
-    <section className="relative py-[90px] bg-gradient-to-b from-[#fafbff] via-white to-[#fafbff] overflow-hidden">
+    <section className="relative py-[96px] bg-gradient-to-b from-[#fafbff] via-white to-[#fafbff] overflow-hidden">
       {/* 背景插图 */}
       <div className="absolute left-1/2 top-[calc(50%+33px)] -translate-x-1/2 -translate-y-1/2 w-[1920px] h-[839px] pointer-events-none">
         <img

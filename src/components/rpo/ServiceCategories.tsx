@@ -21,7 +21,7 @@ const SERVICE_CATEGORIES = [
 
 const ServiceCategories = () => {
   return (
-    <section className="relative py-[90px] bg-gradient-to-b from-white via-[#fafbff] to-white overflow-hidden">
+    <section className="relative py-[96px] bg-gradient-to-b from-white via-[#fafbff] to-white overflow-hidden">
       {/* 背景装饰 - 左侧 */}
       <img
         src="/images/ServiceCategories/bg-deco-left.svg"

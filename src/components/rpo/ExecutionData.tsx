@@ -47,10 +47,16 @@ function AnimatedNumber({ value, unit, started, delay }: { value: number; unit: 
 
   return (
     <div className="mb-[14px]">
-      <span className="text-[36px] lg:text-[42px] font-bold leading-none tracking-tight transition-all duration-500 group-hover:text-[#f6c437]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+      <span
+        className="text-[42px] font-semibold leading-[42px] tracking-[-1.05px] transition-all duration-500 group-hover:text-[#f6c437]"
+        style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+      >
         {active ? count.toLocaleString() : '0'}
       </span>
-      <span className="text-[14px] font-normal ml-[6px] text-white/50" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+      <span
+        className="text-[14px] leading-[21px] ml-[8px] text-white/50"
+        style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+      >
         {unit}
       </span>
     </div>
@@ -74,37 +80,73 @@ const ExecutionData = () => {
   }, [handleIntersection]);
 
   return (
-    <section ref={sectionRef} className="relative py-[100px] bg-gradient-to-br from-[#2a5cc8] via-[#3568d4] to-[#4a83f2] text-white overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative py-[96px] text-white overflow-hidden"
+      style={{
+        background: 'linear-gradient(161.07deg, #2A5CC8 24.434%, #3568D4 51.087%, #6093F6 77.741%)'
+      }}
+    >
       {/* 背景纹理 - 斜线网格 */}
       <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'repeating-linear-gradient(45deg, white 0, white 1px, transparent 1px, transparent 32px)' }} />
 
-      <div className="relative max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
+      {/* 背景装饰图片 - image 17 左上旋转 */}
+      <div className="absolute top-[-358.73px] left-[-489.19px] w-[1560.822px] h-[1560.822px] pointer-events-none">
+        <div className="w-full h-full flex items-center justify-center">
+          <div className="-rotate-[30deg] w-[1142.601px] h-[1142.601px] opacity-30">
+            <img src="/images/ExecutionData/bg-image-17.png" alt="" className="w-full h-full object-cover" />
+          </div>
+        </div>
+      </div>
+
+      {/* 背景装饰图片 - image 16 右上 */}
+      <div className="absolute top-[-66.91px] left-[1008px] w-[931px] h-[806px] opacity-30 pointer-events-none">
+        <img src="/images/ExecutionData/bg-image-16.png" alt="" className="w-full h-full object-cover" />
+      </div>
+
+      <div className="relative max-w-[1280px] mx-auto px-[64px]">
         {/* 标题区 */}
-        <div className="text-center mb-[64px]">
-          <div className="inline-flex items-center gap-3 mb-[16px]">
-            <div className="w-10 h-[1px] bg-gradient-to-r from-transparent to-white/40" />
-            <h2 className="text-[24px] font-bold leading-[29px]" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
+        <div className="flex items-center justify-center mb-[65px]">
+          <img src="/images/ExecutionData/title-deco-left.png" alt="" className="w-[112px] h-[21px]" />
+          <div className="flex flex-col items-center mx-4">
+            <h2
+              className="text-[32px] font-semibold leading-[38px] mb-[13px]"
+              style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+            >
               执行数据
             </h2>
-            <div className="w-10 h-[1px] bg-gradient-to-l from-transparent to-white/40" />
+            <p
+              className="text-[16px] text-white/50 leading-[20px]"
+              style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+            >
+              以数据驱动招聘，用结果证明实力
+            </p>
           </div>
-          <p className="text-sm text-white/50" style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
-            以数据驱动招聘，用结果证明实力
-          </p>
+          <img src="/images/ExecutionData/title-deco-right.png" alt="" className="w-[112px] h-[21px]" />
         </div>
 
         {/* 数据展示 - 渐变描边面板 */}
-        <div className="relative p-[1px] rounded-[16px] bg-gradient-to-br from-white/50 via-white/[0.08] to-white/40" style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.6)' }}>
-          <div className="rounded-[15px] overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0.006) 50%, rgba(255,255,255,0.008) 100%)', boxShadow: 'inset 0 0 30px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.08)' }}>
-          <div className="flex flex-col lg:flex-row items-stretch justify-center" style={{ backdropFilter: 'blur(1.5px)' }}>
+        <div
+          className="relative p-[1px] rounded-[16px]"
+          style={{
+            backgroundImage: 'linear-gradient(172.12deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.4) 100%)'
+          }}
+        >
+          <div className="absolute inset-0 rounded-[16px] shadow-[0px_0px_0px_1px_rgba(255,255,255,0.6)]" />
+          <div className="relative rounded-[15px] overflow-hidden">
+            <div
+              className="absolute inset-0 rounded-[15px] pointer-events-none"
+              style={{ backdropFilter: 'blur(10px)', background: 'rgba(255,255,255,0.01)' }}
+            />
+            <div
+              className="relative flex items-stretch justify-center"
+              style={{ backdropFilter: 'blur(0.75px)' }}
+            >
             {EXECUTION_DATA.map((item, index) => (
               <div key={index} className="group relative flex-1">
                 {/* 分隔线 */}
                 {index > 0 && (
-                  <div className="hidden lg:block absolute left-0 top-[15%] bottom-[15%] w-px bg-gradient-to-b from-transparent via-white/30 to-transparent" />
-                )}
-                {index > 0 && (
-                  <div className="lg:hidden absolute top-0 left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                  <div className="absolute left-0 top-[15%] bottom-[15%] w-px bg-gradient-to-b from-transparent via-white/30 to-transparent" />
                 )}
 
                 {/* 数据单元 */}
@@ -124,13 +166,14 @@ const ExecutionData = () => {
                 </div>
               </div>
             ))}
-          </div>
+            </div>
+            <div className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0px_0px_30px_0px_rgba(255,255,255,0.04),inset_0px_1px_0px_0px_rgba(255,255,255,0.08)]" />
           </div>
         </div>
 
         {/* 底部注释 */}
-        <div className="mt-[40px] text-center">
-          <span className="inline-flex items-center gap-2 text-[12px] text-white/30">
+        <div className="mt-[65px] text-center">
+          <span className="inline-flex items-center gap-2 text-[12px] leading-[18px] text-white/30">
             <div className="w-[6px] h-[6px] rounded-full bg-[#f6c437]/40" />
             数据持续更新中
           </span>
