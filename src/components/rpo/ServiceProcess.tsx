@@ -75,7 +75,9 @@ const ServiceProcess = () => {
 
   return (
     <div ref={containerRef} className="relative" style={{ height: '400vh' }}>
-      <section className="sticky top-0 h-screen bg-gradient-to-b from-white via-[#fafbff] to-[#f5f9ff] overflow-hidden">
+      <section className="sticky top-[60px] h-screen bg-gradient-to-b from-white via-[#fafbff] to-[#f5f9ff] overflow-hidden"
+        style={{ height: 'calc(100vh - 60px)' }}
+      >
         {/* 背景装饰 */}
         <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 20% 30%, rgba(232,242,255,1) 0%, rgba(232,242,255,0) 50%)' }} />
         <div className="absolute top-[104px] right-[152px] w-[256px] h-[256px] rounded-full blur-[32px]" style={{ backgroundImage: 'linear-gradient(135deg, rgba(74,131,242,0.06) 0%, rgba(74,131,242,0) 100%)' }} />
@@ -124,12 +126,14 @@ const ServiceProcess = () => {
             {/* 左侧：阶段进度指示器 */}
             <nav className="flex-shrink-0 w-[180px] flex flex-col justify-center">
               <div className="relative">
-                {/* 连接线 */}
-                <div className="absolute left-[11px] top-[24px] bottom-[24px] w-[2px] bg-[#e5e7eb]" />
-                {/* 进度线 */}
+                {/* 连接线 - 从第一个节点底部到最后一个节点顶部，不超出圆形 */}
+                <div className="absolute left-[7px] top-[16px] bottom-[16px] w-[2px] bg-[#e5e7eb]" />
+                {/* 进度线 - 从第一个节点底部延伸到当前激活节点顶部 */}
                 <div
-                  className="absolute left-[11px] top-[24px] w-[2px] bg-[#4a83f2] transition-all duration-500 ease-out"
-                  style={{ height: `${(activePhase / (PHASES.length - 1)) * (100 - (48 / 3))}%` }}
+                  className="absolute left-[7px] top-[16px] w-[2px] bg-[#4a83f2] transition-all duration-500 ease-out"
+                  style={{
+                    height: `${activePhase * 88}px`
+                  }}
                 />
 
                 <div className="relative flex flex-col gap-[40px]">
@@ -140,20 +144,16 @@ const ServiceProcess = () => {
                       <button
                         key={phase}
                         onClick={() => scrollToPhase(index)}
-                        className="flex items-center gap-4 text-left group transition-all duration-300"
+                        className="flex items-center gap-[16px] text-left group transition-all duration-300"
                       >
                         {/* 圆点指示器 */}
-                        <div className={`relative flex-shrink-0 w-6 h-6 rounded-full border-2 transition-all duration-400 ${
+                        <div className={`relative flex-shrink-0 w-[16px] h-[16px] rounded-full border-2 transition-all duration-400 ${
                           isActive
                             ? 'border-[#4a83f2] bg-[#4a83f2]'
                             : isPast
                               ? 'border-[#4a83f2] bg-white'
-                              : 'border-[#4a83f2] bg-white'
-                        }`}>
-                          {isActive && (
-                            <div className="absolute inset-[6px] rounded-full bg-white" />
-                          )}
-                        </div>
+                              : 'border-[#e5e7eb] bg-white'
+                        }`} />
 
                         {/* 文字 */}
                         <div className="flex flex-col">
@@ -164,9 +164,9 @@ const ServiceProcess = () => {
                           }`} style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
                             {phase}阶段
                           </span>
-                          <span className={`text-[12px] leading-[16px] mt-1 transition-all duration-400 ${
+                          <span className={`text-[12px] leading-[16px] pt-[4px] transition-all duration-400 ${
                             isActive ? 'text-[#4a83f2]/70' : 'text-[#606266]/30'
-                          }`}>
+                          }`} style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}>
                             步骤 {PHASE_META[phase].steps}
                           </span>
                         </div>
@@ -239,15 +239,15 @@ function BentoGrid({ steps, phaseIndex }: { steps: ServiceStep[]; phaseIndex: nu
 function Card({ step, className = '' }: { step: ServiceStep; className?: string }) {
   return (
     <div className={`group ${className}`}>
-      <div className="relative h-full backdrop-blur-[4px] border border-white rounded-[8px] pt-[25px] pb-[21px] px-[25px] overflow-hidden transition-all duration-500 hover:-translate-y-1"
-        style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.16))' }}
+      <div className="relative h-full backdrop-blur-[4px] border border-[#e5e7eb] rounded-[12px] pt-[25px] pb-[21px] px-[25px] overflow-hidden transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-[#4a83f2]/30"
+        style={{ background: 'linear-gradient(to bottom, #f1f6ff 0%, white 50%, white 100%)' }}
       >
         {/* 顶部装饰线 */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#4a83f2] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-[8px]" />
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#4a83f2] opacity-0 group-hover:opacity-100 transition-opacity duration-400 rounded-t-[12px]" />
 
         <div className="flex items-start gap-[14px]">
           {/* 序号徽章 */}
-          <div className="flex-shrink-0 w-10 h-10 rounded-[8px] bg-[#4a83f2] flex items-center justify-center">
+          <div className="flex-shrink-0 w-[40px] h-[40px] rounded-[8px] bg-[#4a83f2] flex items-center justify-center transition-transform duration-400 group-hover:scale-105">
             <span
               className="text-[14px] font-semibold text-white leading-[21px]"
               style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
@@ -258,7 +258,7 @@ function Card({ step, className = '' }: { step: ServiceStep; className?: string 
 
           <div className="flex-1 flex flex-col gap-[8px]">
             <h3
-              className="text-[18px] font-semibold leading-[22px] text-[#303133] transition-colors duration-500 group-hover:text-[#4a83f2]"
+              className="text-[18px] font-semibold leading-[22px] text-[#303133] transition-colors duration-400 group-hover:text-[#4a83f2]"
               style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
             >
               {step.title}

@@ -1,3 +1,5 @@
+import { useState, useEffect, useRef, useCallback } from 'react';
+
 const HIGHLIGHTS = [
   { keyword: '专业团队', detail: '丰富的行业经验，深耕招聘领域' },
   { keyword: '快速响应', detail: '高效推进招聘流程，缩短招聘周期' },
@@ -8,93 +10,113 @@ const HIGHLIGHTS = [
 ] as const;
 
 const ProjectHighlights = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
+    if (entries[0].isIntersecting) setIsVisible(true);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleIntersection, { threshold: 0.3 });
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [handleIntersection]);
+
   return (
-    <section
-      className="relative py-[96px] overflow-hidden"
-      style={{
-        background: 'linear-gradient(182.06deg, #F0F6FF 6.216%, #FFFFFF 60.105%, #E6F0FF 96.032%)'
-      }}
-    >
-      {/* 背景装饰网格 */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 1905 608"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ opacity: 0.4 }}
-        >
+    <section ref={sectionRef} className="relative py-[96px] bg-white overflow-hidden">
+      {/* 背景 - 透视隧道网格 */}
+      <div className="absolute inset-0 overflow-hidden">
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="grid-grad-h" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="rgba(74,131,242,0)" />
-              <stop offset="50%" stopColor="rgba(74,131,242,0.15)" />
+            <clipPath id="clip-top">
+              <polygon points="0,0 1200,0 600,400" />
+            </clipPath>
+            <clipPath id="clip-bottom">
+              <polygon points="0,800 1200,800 600,400" />
+            </clipPath>
+            <clipPath id="clip-left">
+              <polygon points="0,0 0,800 600,400" />
+            </clipPath>
+            <clipPath id="clip-right">
+              <polygon points="1200,0 1200,800 600,400" />
+            </clipPath>
+            <linearGradient id="fade-top" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="rgba(74,131,242,0.14)" />
+              <stop offset="60%" stopColor="rgba(74,131,242,0.06)" />
               <stop offset="100%" stopColor="rgba(74,131,242,0)" />
             </linearGradient>
-            <linearGradient id="grid-grad-v" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="rgba(74,131,242,0)" />
-              <stop offset="50%" stopColor="rgba(74,131,242,0.15)" />
+            <linearGradient id="fade-bottom" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stopColor="rgba(74,131,242,0.14)" />
+              <stop offset="60%" stopColor="rgba(74,131,242,0.06)" />
+              <stop offset="100%" stopColor="rgba(74,131,242,0)" />
+            </linearGradient>
+            <linearGradient id="fade-left" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="rgba(74,131,242,0.12)" />
+              <stop offset="60%" stopColor="rgba(74,131,242,0.05)" />
+              <stop offset="100%" stopColor="rgba(74,131,242,0)" />
+            </linearGradient>
+            <linearGradient id="fade-right" x1="1" y1="0" x2="0" y2="0">
+              <stop offset="0%" stopColor="rgba(74,131,242,0.12)" />
+              <stop offset="60%" stopColor="rgba(74,131,242,0.05)" />
               <stop offset="100%" stopColor="rgba(74,131,242,0)" />
             </linearGradient>
           </defs>
 
-          {/* 透视网格 - 横向线条 */}
-          {Array.from({ length: 13 }, (_, i) => {
-            const y = (i / 12) * 608;
-            const centerY = 304;
-            const distFromCenter = Math.abs(y - centerY) / centerY;
-            const scaleX = 0.4 + (1 - distFromCenter) * 0.6;
-            const offsetX = ((1 - scaleX) / 2) * 1905;
-            return (
-              <line
-                key={`h-${i}`}
-                x1={offsetX}
-                y1={y}
-                x2={1905 - offsetX}
-                y2={y}
-                stroke="url(#grid-grad-h)"
-                strokeWidth="1"
-              />
-            );
-          })}
+          {/* 顶面 */}
+          <g clipPath="url(#clip-top)">
+            {Array.from({ length: 18 }, (_, i) => {
+              const t = (i + 1) / 19;
+              const edgeX = t * 1200;
+              const centerX = 600 + (edgeX - 600) * 0.25;
+              return <line key={`t-${i}`} x1={edgeX} y1={0} x2={centerX} y2={400} stroke="url(#fade-top)" strokeWidth="1" />;
+            })}
+          </g>
 
-          {/* 透视网格 - 纵向线条 */}
-          {Array.from({ length: 19 }, (_, i) => {
-            const x = (i / 18) * 1905;
-            const centerX = 952.5;
-            const distFromCenter = Math.abs(x - centerX) / centerX;
-            const scaleY = 0.4 + (1 - distFromCenter) * 0.6;
-            const offsetY = ((1 - scaleY) / 2) * 608;
-            return (
-              <line
-                key={`v-${i}`}
-                x1={x}
-                y1={offsetY}
-                x2={x}
-                y2={608 - offsetY}
-                stroke="url(#grid-grad-v)"
-                strokeWidth="1"
-              />
-            );
-          })}
+          {/* 底面 */}
+          <g clipPath="url(#clip-bottom)">
+            {Array.from({ length: 18 }, (_, i) => {
+              const t = (i + 1) / 19;
+              const edgeX = t * 1200;
+              const centerX = 600 + (edgeX - 600) * 0.25;
+              return <line key={`b-${i}`} x1={edgeX} y1={800} x2={centerX} y2={400} stroke="url(#fade-bottom)" strokeWidth="1" />;
+            })}
+          </g>
 
-          {/* 同心矩形框 */}
-          {Array.from({ length: 4 }, (_, i) => {
-            const scale = 1 - (i + 1) * 0.16;
-            const w = 1905 * scale;
-            const h = 608 * scale;
-            const x = (1905 - w) / 2;
-            const y = (608 - h) / 2;
-            const opacity = 0.1 - i * 0.02;
+          {/* 左面 */}
+          <g clipPath="url(#clip-left)">
+            {Array.from({ length: 12 }, (_, i) => {
+              const t = (i + 1) / 13;
+              const edgeY = t * 800;
+              const centerY = 400 + (edgeY - 400) * 0.25;
+              return <line key={`l-${i}`} x1={0} y1={edgeY} x2={600} y2={centerY} stroke="url(#fade-left)" strokeWidth="1" />;
+            })}
+          </g>
+
+          {/* 右面 */}
+          <g clipPath="url(#clip-right)">
+            {Array.from({ length: 12 }, (_, i) => {
+              const t = (i + 1) / 13;
+              const edgeY = t * 800;
+              const centerY = 400 + (edgeY - 400) * 0.25;
+              return <line key={`r-${i}`} x1={1200} y1={edgeY} x2={600} y2={centerY} stroke="url(#fade-right)" strokeWidth="1" />;
+            })}
+          </g>
+
+          {/* 同心矩形 */}
+          {Array.from({ length: 5 }, (_, i) => {
+            const scale = 1 - i * 0.18;
+            const w = 1200 * scale;
+            const h = 800 * scale;
+            const x = (1200 - w) / 2;
+            const y = (800 - h) / 2;
             return (
               <rect
                 key={`rect-${i}`}
-                x={x}
-                y={y}
-                width={w}
-                height={h}
+                x={x} y={y} width={w} height={h}
                 fill="none"
-                stroke={`rgba(74,131,242,${opacity})`}
-                strokeWidth="1.5"
+                stroke={`rgba(74,131,242,${0.08 - i * 0.015})`}
+                strokeWidth="1"
                 rx="2"
               />
             );
@@ -123,12 +145,17 @@ const ProjectHighlights = () => {
           <img src="/images/common/title-deco-right.png" alt="" className="w-[112px] h-[21px]" />
         </div>
 
-        {/* 亮点网格 - 2列3行 */}
+        {/* 亮点网格 - 2列3行，滚动载入动画 */}
         <div className="grid grid-cols-2 gap-x-[48px] gap-y-[40px]">
           {HIGHLIGHTS.map((item, index) => (
             <div
               key={index}
               className="group flex items-start gap-[20px] py-[4px]"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
+                transition: `all 500ms cubic-bezier(0.16, 1, 0.3, 1) ${200 + index * 80}ms`
+              }}
             >
               {/* 序号 */}
               <span

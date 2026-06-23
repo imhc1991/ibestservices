@@ -23,23 +23,23 @@ const Glory = () => {
         </div>
 
         {/* 荣誉卡片 */}
-        <div className="group bg-white border border-[#e5e7eb] rounded-[12px] py-[41px] px-[256px] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-[#4a83f2]/30 hover:shadow-[0_8px_24px_-4px_rgba(74,131,242,0.12)]">
+        <div className="group bg-white border border-[#e5e7eb] rounded-[12px] py-[41px] px-[256px] transition-all duration-400 ease-out hover:-translate-y-2 hover:border-[#4a83f2]/40 hover:shadow-[0_12px_32px_-4px_rgba(74,131,242,0.15)]">
           <div className="max-w-[640px] w-[640px] h-[303px] relative">
             {/* 图标 */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[120px] h-[120px] transition-transform duration-500 ease-out group-hover:scale-105">
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[120px] h-[120px] transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-1">
               <img src="/images/Glory/icon.png" alt="" className="w-full h-full object-contain" />
             </div>
 
             {/* 标题 */}
             <div className="absolute left-0 right-0 top-[120px] pt-[16px] text-center whitespace-nowrap">
               <span
-                className="text-[28px] font-semibold leading-[40px] text-[#303133]"
+                className="text-[28px] font-semibold leading-[40px] text-[#303133] transition-colors duration-300"
                 style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
               >
                 连续多年位居行业
               </span>
               <span
-                className="text-[32px] font-semibold leading-[40px] text-[#4a83f2] transition-colors duration-400 group-hover:text-[#3d6dd9]"
+                className="text-[32px] font-semibold leading-[40px] text-[#4a83f2] group-hover:animate-[top3Pulse_2s_ease-in-out_infinite]"
                 style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
               >
                 {` TOP3`}

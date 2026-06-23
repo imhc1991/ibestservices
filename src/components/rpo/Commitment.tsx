@@ -55,9 +55,9 @@ const Commitment = () => {
         <div className="grid grid-cols-4 gap-[20px]">
           {COMMITMENTS.map((item, index) => (
             <div key={index} className="group flex flex-col">
-              <div className="h-full bg-white border border-[#e5e7eb] rounded-[12px] p-[33px] flex flex-col gap-[6px] transition-all duration-400 ease-out hover:-translate-y-2 hover:border-[#4a83f2]/25 hover:shadow-[0_12px_32px_-8px_rgba(74,131,242,0.15)]">
+              <div className="h-full bg-white border border-[#e5e7eb] rounded-[12px] p-[33px] flex flex-col gap-[6px] transition-all duration-400 ease-out hover:-translate-y-2 hover:border-[#4a83f2]/35 hover:shadow-[0_12px_32px_-8px_rgba(74,131,242,0.18)]">
                 {/* 图标 */}
-                <div className="w-[48px] h-[48px] mb-0 transition-transform duration-400 ease-out group-hover:scale-110">
+                <div className="w-[48px] h-[48px] mb-0 transition-all duration-400 ease-out group-hover:scale-110 group-hover:-translate-y-0.5">
                   <img src={item.icon} alt="" className="w-full h-full" />
                 </div>
 
@@ -65,14 +65,14 @@ const Commitment = () => {
                 <div className="pt-[14px]">
                   <div className="flex items-baseline">
                     <span
-                      className="text-[28px] font-semibold leading-[28px] tracking-[-0.7px] text-[#4a83f2] transition-colors duration-300 group-hover:text-[#3d6dd9]"
+                      className="text-[28px] font-semibold leading-[28px] tracking-[-0.7px] text-[#4a83f2] transition-colors duration-300 group-hover:text-[#3568c7]"
                       style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
                     >
                       {item.metric}
                     </span>
                     {'unit' in item && item.unit && (
                       <span
-                        className="text-[13px] font-medium leading-[19.5px] text-[#606266] ml-[3px]"
+                        className="text-[13px] font-medium leading-[19.5px] text-[#606266] ml-[3px] transition-colors duration-300 group-hover:text-[#3568c7]"
                         style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
                       >
                         {item.unit}

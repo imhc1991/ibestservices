@@ -65,9 +65,9 @@ const ServiceCategories = () => {
             {SERVICE_CATEGORIES.map((category) => (
               <div key={category.id} className="group relative">
                 {/* 卡片主体 */}
-                <div className="relative bg-white border border-[#e5e7eb] rounded-[8px] pt-[9px] pb-[25px] px-[25px] transition-all duration-500 hover:border-[#4a83f2] hover:-translate-y-2">
+                <div className="relative bg-white border border-[#e5e7eb] rounded-[12px] pt-[9px] pb-[25px] px-[25px] transition-all duration-500 hover:border-[#4a83f2] hover:-translate-y-2">
                   {/* 顶部装饰线 */}
-                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#4a83f2] via-[#2f6df6] to-[#4a83f2] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-[8px]" />
+                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#4a83f2] via-[#2f6df6] to-[#4a83f2] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-[12px]" />
 
                   {/* 序号装饰 */}
                   <div
