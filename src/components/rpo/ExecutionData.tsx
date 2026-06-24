@@ -110,8 +110,8 @@ const ExecutionData = () => {
           <img src={`${import.meta.env.BASE_URL}images/ExecutionData/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />
           <div className="flex flex-col items-center mx-4">
             <h2
-              className="text-[32px] font-semibold leading-[38px] mb-[13px]"
-              style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+              className="text-[32px] font-medium leading-[38px] mb-[13px]"
+              style={{ fontFamily: 'PingFangSC-Medium, "PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
             >
               执行数据
             </h2>

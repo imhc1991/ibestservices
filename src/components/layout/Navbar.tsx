@@ -36,12 +36,7 @@ const Navbar = () => {
           ]
         },
         { label: '品牌企业服务业务', path: '/services/brand' },
-        {
-          label: '创新业务部',
-          children: [
-            { label: 'RPO&猎头服务', path: '/rpo' }
-          ]
-        }
+        { label: 'RPO及猎头服务', path: '/rpo' }
       ]
     },
     { label: '加入我们', path: '/join' },

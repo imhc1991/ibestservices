@@ -89,8 +89,8 @@ const ServiceProcess = () => {
             <img src={`${import.meta.env.BASE_URL}images/common/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />
             <div className="flex flex-col items-center mx-4">
               <h2
-                className="text-[32px] font-semibold leading-[38px] text-[#303133] mb-[13px]"
-                style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+                className="text-[32px] font-medium leading-[38px] text-[#303133] mb-[13px]"
+                style={{ fontFamily: 'PingFangSC-Medium, "PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
               >
                 服务流程
               </h2>
@@ -124,7 +124,7 @@ const ServiceProcess = () => {
           {/* 桌面端：左右分栏 */}
           <div className="hidden md:flex flex-1 gap-[48px] min-h-0">
             {/* 左侧：阶段进度指示器 */}
-            <nav className="flex-shrink-0 w-[180px] flex flex-col justify-center">
+            <nav className="flex-shrink-0 w-[180px] flex flex-col pt-[160px]">
               <div className="relative">
                 {/* 连接线 - 从第一个节点底部到最后一个节点顶部，不超出圆形 */}
                 <div className="absolute left-[7px] top-[16px] bottom-[16px] w-[2px] bg-[#e5e7eb]" />
@@ -178,7 +178,7 @@ const ServiceProcess = () => {
             </nav>
 
             {/* 右侧：内容切换区 */}
-            <div className="flex-1 flex items-center min-h-0 overflow-hidden">
+            <div className="flex-1 pt-[160px] min-h-0 overflow-hidden">
               <div
                 key={currentPhase}
                 className="w-full"
@@ -215,13 +215,13 @@ function getStepsForPhase(phaseIndex: number): ServiceStep[] {
 /* ─── Bento Grid ─── */
 function BentoGrid({ steps, phaseIndex }: { steps: ServiceStep[]; phaseIndex: number }) {
   if (phaseIndex === 0) {
-    // 前期准备: 3列，第1列跨2行，第4张卡片跨2-3列
+    // 前期准备: 2x2 Grid布局，卡片高度自适应内容（hug）
     return (
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[18px] md:grid-rows-[186px_120px]">
-        <Card step={steps[0]} className="md:row-span-2" />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[18px]">
+        <Card step={steps[0]} />
         <Card step={steps[1]} />
         <Card step={steps[2]} />
-        <Card step={steps[3]} className="md:col-span-2" />
+        <Card step={steps[3]} />
       </div>
     );
   }

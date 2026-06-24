@@ -44,8 +44,8 @@ const ServiceCategories = () => {
               <img src={`${import.meta.env.BASE_URL}images/common/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />
               <div className="flex flex-col items-center mx-4">
                 <h2
-                  className="text-[32px] font-semibold leading-[38px] text-[#303133] mb-[13px]"
-                  style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
+                  className="text-[32px] font-medium leading-[38px] text-[#303133] mb-[13px]"
+                  style={{ fontFamily: 'PingFangSC-Medium, "PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
                 >
                   业务分类
                 </h2>
@@ -65,9 +65,11 @@ const ServiceCategories = () => {
             {SERVICE_CATEGORIES.map((category) => (
               <div key={category.id} className="group relative">
                 {/* 卡片主体 */}
-                <div className="relative bg-white border border-[#e5e7eb] rounded-[12px] pt-[9px] pb-[25px] px-[25px] transition-all duration-500 hover:border-[#4a83f2] hover:-translate-y-2">
-                  {/* 顶部装饰线 */}
-                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#4a83f2] via-[#2f6df6] to-[#4a83f2] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-[12px]" />
+                <div className="relative bg-white border border-[#e5e7eb] rounded-[8px] pt-[9px] pb-[25px] px-[25px] transition-all duration-500 hover:border-[#4a83f2] hover:-translate-y-2">
+                  {/* 顶部装饰线容器 - 单独裁切 */}
+                  <div className="absolute top-0 left-0 right-0 h-[3px] overflow-hidden rounded-t-[8px]">
+                    <div className="w-full h-full bg-gradient-to-r from-[#4a83f2] via-[#2f6df6] to-[#4a83f2] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
 
                   {/* 序号装饰 */}
                   <div

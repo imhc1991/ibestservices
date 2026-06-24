@@ -20,16 +20,7 @@ const HeroBanner = () => {
         <div className="max-w-[540px] flex flex-col gap-8">
           {/* 标题区 */}
           <div className="flex flex-col gap-5">
-            <div className="inline-flex items-center self-start px-[17px] py-[7px] bg-[#4a83f2]/8 border border-[#4a83f2]/20 rounded-full">
-              <span
-                className="text-xs font-medium text-[#4a83f2]"
-                style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
-              >
-                创新业务部
-              </span>
-            </div>
-
-            <h1
+<h1
               className="text-[38px] font-semibold leading-[38px] text-[#303133]"
               style={{ fontFamily: 'PingFangSC-Medium, PingFang SC, -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
             >

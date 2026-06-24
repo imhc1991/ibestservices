@@ -20,7 +20,7 @@ const CaseStudyDark = () => {
           />
           <div className="flex flex-col items-center mx-4">
             <h2
-              className="text-[32px] font-semibold leading-[38px] text-white mb-[13px]"
+              className="text-[32px] font-medium leading-[38px] text-white mb-[13px]"
               style={{ fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif' }}
             >
               合作案例

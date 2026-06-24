@@ -1,7 +1,7 @@
 import HeroBanner from '../../components/rpo/HeroBanner';
 import ServiceCategories from '../../components/rpo/ServiceCategories';
 import ServiceProcess from '../../components/rpo/ServiceProcess';
-import CaseStudyDark from '../../components/rpo/CaseStudyDark';
+import CaseStudy from '../../components/rpo/CaseStudy';
 import ServiceScope from '../../components/rpo/ServiceScope';
 import ProjectRequirements from '../../components/rpo/ProjectRequirements';
 import ExecutionData from '../../components/rpo/ExecutionData';
@@ -15,7 +15,7 @@ const RPOPage = () => {
       <HeroBanner />
       <ServiceCategories />
       <ServiceProcess />
-      <CaseStudyDark />
+      <CaseStudy />
       <ServiceScope />
       <ProjectRequirements />
       <ExecutionData />
