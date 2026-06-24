@@ -94,20 +94,20 @@ const ExecutionData = () => {
       <div className="absolute top-[-358.73px] left-[-489.19px] w-[1560.822px] h-[1560.822px] pointer-events-none">
         <div className="w-full h-full flex items-center justify-center">
           <div className="-rotate-[30deg] w-[1142.601px] h-[1142.601px] opacity-30">
-            <img src="/images/ExecutionData/bg-image-17.png" alt="" className="w-full h-full object-cover" />
+            <img src={`${import.meta.env.BASE_URL}images/ExecutionData/bg-image-17.png`} alt="" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>
 
       {/* 背景装饰图片 - image 16 右上 */}
       <div className="absolute top-[-66.91px] left-[1008px] w-[931px] h-[806px] opacity-30 pointer-events-none">
-        <img src="/images/ExecutionData/bg-image-16.png" alt="" className="w-full h-full object-cover" />
+        <img src={`${import.meta.env.BASE_URL}images/ExecutionData/bg-image-16.png`} alt="" className="w-full h-full object-cover" />
       </div>
 
       <div className="relative max-w-[1280px] mx-auto px-[64px]">
         {/* 标题区 */}
         <div className="flex items-center justify-center mb-[65px]">
-          <img src="/images/ExecutionData/title-deco-left.png" alt="" className="w-[112px] h-[21px]" />
+          <img src={`${import.meta.env.BASE_URL}images/ExecutionData/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />
           <div className="flex flex-col items-center mx-4">
             <h2
               className="text-[32px] font-semibold leading-[38px] mb-[13px]"
@@ -122,7 +122,7 @@ const ExecutionData = () => {
               以数据驱动招聘，用结果证明实力
             </p>
           </div>
-          <img src="/images/ExecutionData/title-deco-right.png" alt="" className="w-[112px] h-[21px]" />
+          <img src={`${import.meta.env.BASE_URL}images/ExecutionData/title-deco-right.png`} alt="" className="w-[112px] h-[21px]" />
         </div>
 
         {/* 数据展示 - 渐变描边面板 */}

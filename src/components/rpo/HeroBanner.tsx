@@ -9,7 +9,7 @@ const HeroBanner = () => {
       {/* 背景插图 */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <img
-          src="/images/HeroBanner/hero-bg.png"
+          src={`${import.meta.env.BASE_URL}images/HeroBanner/hero-bg.png`}
           alt=""
           className="w-[1920px] max-w-none h-auto"
         />

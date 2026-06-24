@@ -86,7 +86,7 @@ const ServiceProcess = () => {
         <div className="relative h-full max-w-[1280px] mx-auto px-[64px] flex flex-col">
           {/* 标题区 */}
           <div className="flex items-center justify-center pt-[64px] pb-[32px]">
-            <img src="/images/common/title-deco-left.png" alt="" className="w-[112px] h-[21px]" />
+            <img src={`${import.meta.env.BASE_URL}images/common/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />
             <div className="flex flex-col items-center mx-4">
               <h2
                 className="text-[32px] font-semibold leading-[38px] text-[#303133] mb-[13px]"
@@ -101,7 +101,7 @@ const ServiceProcess = () => {
                 14步完整服务流程，全方位保障招聘质量
               </p>
             </div>
-            <img src="/images/common/title-deco-right.png" alt="" className="w-[112px] h-[21px]" />
+            <img src={`${import.meta.env.BASE_URL}images/common/title-deco-right.png`} alt="" className="w-[112px] h-[21px]" />
           </div>
 
           {/* 移动端：顶部横向指示器 */}

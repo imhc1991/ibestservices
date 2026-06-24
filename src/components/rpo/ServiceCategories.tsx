@@ -3,19 +3,19 @@ const SERVICE_CATEGORIES = [
     id: 1,
     title: '中高端人才寻访',
     number: '01',
-    image: '/images/ServiceCategories/category-01.png',
+    image: 'images/ServiceCategories/category-01.png',
   },
   {
     id: 2,
     title: 'RPO招聘流程外包',
     number: '02',
-    image: '/images/ServiceCategories/category-02.png',
+    image: 'images/ServiceCategories/category-02.png',
   },
   {
     id: 3,
     title: '招聘团队驻场服务',
     number: '03',
-    image: '/images/ServiceCategories/category-03.png',
+    image: 'images/ServiceCategories/category-03.png',
   },
 ] as const;
 
@@ -24,14 +24,14 @@ const ServiceCategories = () => {
     <section className="relative py-[96px] bg-gradient-to-b from-white via-[#fafbff] to-white overflow-hidden">
       {/* 背景装饰 - 左侧 */}
       <img
-        src="/images/ServiceCategories/bg-deco-left.svg"
+        src={`${import.meta.env.BASE_URL}images/ServiceCategories/bg-deco-left.svg`}
         alt=""
         className="absolute top-[-86px] left-[-113px] w-[443px] h-[475px] pointer-events-none"
         style={{ opacity: 0.8 }}
       />
       {/* 背景装饰 - 右侧 */}
       <img
-        src="/images/ServiceCategories/bg-deco-right.svg"
+        src={`${import.meta.env.BASE_URL}images/ServiceCategories/bg-deco-right.svg`}
         alt=""
         className="absolute top-[200px] right-[-120px] w-[380px] h-[380px] pointer-events-none"
       />
@@ -41,7 +41,7 @@ const ServiceCategories = () => {
         <div className="flex flex-col items-center gap-[64px]">
           <div className="flex items-center justify-center">
             <div className="flex items-center gap-0">
-              <img src="/images/common/title-deco-left.png" alt="" className="w-[112px] h-[21px]" />
+              <img src={`${import.meta.env.BASE_URL}images/common/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />
               <div className="flex flex-col items-center mx-4">
                 <h2
                   className="text-[32px] font-semibold leading-[38px] text-[#303133] mb-[13px]"
@@ -56,7 +56,7 @@ const ServiceCategories = () => {
                   三大核心业务领域，全方位满足企业招聘需求
                 </p>
               </div>
-              <img src="/images/common/title-deco-right.png" alt="" className="w-[112px] h-[21px]" />
+              <img src={`${import.meta.env.BASE_URL}images/common/title-deco-right.png`} alt="" className="w-[112px] h-[21px]" />
             </div>
           </div>
 
@@ -87,7 +87,7 @@ const ServiceCategories = () => {
                     {/* 图标 + 分割线 */}
                     <div className="flex items-center gap-[10px]">
                       <img
-                        src={category.image}
+                        src={`${import.meta.env.BASE_URL}${category.image}`}
                         alt={category.title}
                         className="w-[120px] h-[120px] object-contain"
                       />

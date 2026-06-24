@@ -127,7 +127,7 @@ const ProjectHighlights = () => {
       <div className="relative max-w-[1280px] mx-auto px-[64px]">
         {/* 标题区 */}
         <div className="flex items-center justify-center mb-[64px] min-w-[642px]">
-          <img src="/images/common/title-deco-left.png" alt="" className="w-[112px] h-[21px]" />
+          <img src={`${import.meta.env.BASE_URL}images/common/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />
           <div className="flex flex-col items-center mx-4">
             <h2
               className="text-[32px] font-semibold leading-[38px] text-[#303133] mb-[13px]"
@@ -142,7 +142,7 @@ const ProjectHighlights = () => {
               以专业服务赋能招聘，用高效交付创造价值
             </p>
           </div>
-          <img src="/images/common/title-deco-right.png" alt="" className="w-[112px] h-[21px]" />
+          <img src={`${import.meta.env.BASE_URL}images/common/title-deco-right.png`} alt="" className="w-[112px] h-[21px]" />
         </div>
 
         {/* 亮点网格 - 2列3行，滚动载入动画 */}

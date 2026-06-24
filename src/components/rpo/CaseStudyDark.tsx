@@ -4,7 +4,7 @@ const CaseStudyDark = () => {
       {/* 背景装饰图 */}
       <div className="absolute left-1/2 top-[calc(50%+51.58px)] -translate-x-1/2 -translate-y-1/2 w-[1920px] h-[606px] pointer-events-none">
         <img
-          src="/images/CaseStudyDark/background.png"
+          src={`${import.meta.env.BASE_URL}images/CaseStudyDark/background.png`}
           alt=""
           className="absolute inset-0 w-full h-full object-cover max-w-none"
         />
@@ -14,7 +14,7 @@ const CaseStudyDark = () => {
         {/* 标题区 */}
         <div className="flex items-center justify-center mb-[64px] min-w-[642px]">
           <img
-            src="/images/CaseStudyDark/title-deco-left.png"
+            src={`${import.meta.env.BASE_URL}images/CaseStudyDark/title-deco-left.png`}
             alt=""
             className="w-[112px] h-[21px]"
           />
@@ -33,7 +33,7 @@ const CaseStudyDark = () => {
             </p>
           </div>
           <img
-            src="/images/CaseStudyDark/title-deco-right.png"
+            src={`${import.meta.env.BASE_URL}images/CaseStudyDark/title-deco-right.png`}
             alt=""
             className="w-[112px] h-[21px]"
           />
@@ -49,7 +49,7 @@ const CaseStudyDark = () => {
                   className="text-[26px] font-semibold leading-[32px] bg-clip-text text-transparent bg-center bg-cover bg-no-repeat"
                   style={{
                     fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif',
-                    backgroundImage: 'url("/images/CaseStudyDark/gradient-text.png")'
+                    backgroundImage: 'url(images/CaseStudyDark/gradient-text.png")'
                   }}
                 >
                   亚太地区某智能语音与人工智能龙头企业

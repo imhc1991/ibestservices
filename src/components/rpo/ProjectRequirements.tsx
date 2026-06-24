@@ -17,7 +17,7 @@ const ProjectRequirements = () => {
       <div className="max-w-[1280px] mx-auto px-[64px]">
         {/* 标题区 */}
         <div className="flex items-center justify-center mb-[56px]">
-          <img src="/images/common/title-deco-left.png" alt="" className="w-[112px] h-[21px]" />
+          <img src={`${import.meta.env.BASE_URL}images/common/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />
           <div className="flex flex-col items-center mx-4">
             <h2
               className="text-[32px] font-semibold leading-[38px] text-[#303133] mb-[13px]"
@@ -32,7 +32,7 @@ const ProjectRequirements = () => {
               明确的需求定义，高效的交付保障
             </p>
           </div>
-          <img src="/images/common/title-deco-right.png" alt="" className="w-[112px] h-[21px]" />
+          <img src={`${import.meta.env.BASE_URL}images/common/title-deco-right.png`} alt="" className="w-[112px] h-[21px]" />
         </div>
 
         {/* 双卡片布局 */}
@@ -105,7 +105,7 @@ const ProjectRequirements = () => {
             <div className="h-full bg-white border border-[#e5e7eb] rounded-[12px] overflow-hidden p-[33px] relative">
               {/* 背景图 */}
               <div className="absolute inset-0 pointer-events-none">
-                <img src="/images/ProjectRequirements/Group 100.svg" alt="" className="w-full h-full object-cover" />
+                <img src={`${import.meta.env.BASE_URL}images/ProjectRequirements/Group 100.svg`} alt="" className="w-full h-full object-cover" />
               </div>
 
               <div className="relative">

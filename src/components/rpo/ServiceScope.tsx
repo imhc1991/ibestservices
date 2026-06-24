@@ -3,55 +3,55 @@ const SERVICES = [
     title: '招聘全流程',
     subtitle: '精链人才推荐',
     description: '从需求定义到入职跟踪，全链路精准匹配与交付',
-    icon: '/images/ServiceScope/icon-1.png'
+    icon: 'images/ServiceScope/icon-1.png'
   },
   {
     title: 'RPO服务',
     subtitle: '招聘流程外包',
     description: '招聘流程全托管，降低成本、提升效率',
-    icon: '/images/ServiceScope/icon-2.png'
+    icon: 'images/ServiceScope/icon-2.png'
   },
   {
     title: '猎头服务',
     subtitle: '中高端人才寻访',
     description: '定向寻访行业稀缺人才，精准触达高端候选人',
-    icon: '/images/ServiceScope/icon-3.png'
+    icon: 'images/ServiceScope/icon-3.png'
   },
   {
     title: '到场面试速推',
     subtitle: '快速推进',
     description: '加速候选人到场面试流程，提升招聘效率',
-    icon: '/images/ServiceScope/icon-4.png'
+    icon: 'images/ServiceScope/icon-4.png'
   },
   {
     title: '到岗推荐',
     subtitle: '精准匹配',
     description: '推荐即将到岗的优质候选人，缩短招聘周期',
-    icon: '/images/ServiceScope/icon-5.png'
+    icon: 'images/ServiceScope/icon-5.png'
   },
   {
     title: 'OFFER推荐',
     subtitle: '决策支持',
     description: '协助完成 Offer 发放与薪酬谈判',
-    icon: '/images/ServiceScope/icon-6.png'
+    icon: 'images/ServiceScope/icon-6.png'
   },
   {
     title: '薪酬报告',
     subtitle: '市场洞察',
     description: '提供行业薪酬数据与趋势分析',
-    icon: '/images/ServiceScope/icon-7.png'
+    icon: 'images/ServiceScope/icon-7.png'
   },
   {
     title: '人才地图',
     subtitle: '战略规划',
     description: '绘制目标人才分布与流动趋势',
-    icon: '/images/ServiceScope/icon-8.png'
+    icon: 'images/ServiceScope/icon-8.png'
   },
   {
     title: '精链人才推荐',
     subtitle: '精准链接',
     description: '整合行业资源，精准链接高匹配度人才',
-    icon: '/images/ServiceScope/icon-9.png'
+    icon: 'images/ServiceScope/icon-9.png'
   }
 ] as const;
 
@@ -101,7 +101,7 @@ const ServiceCard = ({ service }: { service: typeof SERVICES[number] }) => {
 
         {/* 图标 */}
         <div className="w-[40px] h-[40px] relative transition-transform duration-500 group-hover/card:scale-110">
-          <img src={service.icon} alt="" className="w-full h-full" />
+          <img src={`${import.meta.env.BASE_URL}${service.icon}`} alt="" className="w-full h-full" />
         </div>
 
         {/* 标题 */}
@@ -144,7 +144,7 @@ const ServiceScope = () => {
       <div className="max-w-[1280px] mx-auto px-[64px]">
         {/* 标题区 */}
         <div className="flex items-center justify-center mb-[56px] min-w-[642px]">
-          <img src="/images/common/title-deco-left.png" alt="" className="w-[112px] h-[21px]" />
+          <img src={`${import.meta.env.BASE_URL}images/common/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />
           <div className="flex flex-col items-center mx-4">
             <h2
               className="text-[32px] font-semibold leading-[38px] text-[#303133] mb-[13px]"
@@ -159,7 +159,7 @@ const ServiceScope = () => {
               九大核心服务能力，全方位覆盖企业招聘场景
             </p>
           </div>
-          <img src="/images/common/title-deco-right.png" alt="" className="w-[112px] h-[21px]" />
+          <img src={`${import.meta.env.BASE_URL}images/common/title-deco-right.png`} alt="" className="w-[112px] h-[21px]" />
         </div>
       </div>
 

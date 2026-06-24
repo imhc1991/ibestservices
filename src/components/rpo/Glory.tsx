@@ -4,7 +4,7 @@ const Glory = () => {
       <div className="relative max-w-[1280px] mx-auto px-[64px]">
         {/* 标题区 */}
         <div className="flex items-center justify-center mb-[56px] min-w-[642px]">
-          <img src="/images/common/title-deco-left.png" alt="" className="w-[112px] h-[21px]" />
+          <img src={`${import.meta.env.BASE_URL}images/common/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />
           <div className="flex flex-col items-center mx-4">
             <h2
               className="text-[32px] font-semibold leading-[38px] text-[#303133] mb-[13px]"
@@ -19,7 +19,7 @@ const Glory = () => {
               以专业赢得信赖，以实力铸就荣誉
             </p>
           </div>
-          <img src="/images/common/title-deco-right.png" alt="" className="w-[112px] h-[21px]" />
+          <img src={`${import.meta.env.BASE_URL}images/common/title-deco-right.png`} alt="" className="w-[112px] h-[21px]" />
         </div>
 
         {/* 荣誉卡片 */}
@@ -27,7 +27,7 @@ const Glory = () => {
           <div className="max-w-[640px] w-[640px] h-[303px] relative">
             {/* 图标 */}
             <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[120px] h-[120px] transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-1">
-              <img src="/images/Glory/icon.png" alt="" className="w-full h-full object-contain" />
+              <img src={`${import.meta.env.BASE_URL}images/Glory/icon.png`} alt="" className="w-full h-full object-contain" />
             </div>
 
             {/* 标题 */}
