@@ -1,7 +1,7 @@
 const Glory = () => {
   return (
     <section className="relative py-[96px] bg-[#f8faff] overflow-hidden">
-      <div className="relative max-w-[1280px] mx-auto px-[64px]">
+      <div className="relative max-w-[1440px] mx-auto px-[100px]">
         {/* 标题区 */}
         <div className="flex items-center justify-center mb-[56px] min-w-[642px]">
           <img src={`${import.meta.env.BASE_URL}images/common/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />

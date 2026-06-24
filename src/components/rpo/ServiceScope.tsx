@@ -141,7 +141,7 @@ const ServiceCard = ({ service }: { service: typeof SERVICES[number] }) => {
 const ServiceScope = () => {
   return (
     <section className="relative py-[96px] bg-[#f8faff]">
-      <div className="max-w-[1280px] mx-auto px-[64px]">
+      <div className="max-w-[1440px] mx-auto px-[100px]">
         {/* 标题区 */}
         <div className="flex items-center justify-center mb-[56px] min-w-[642px]">
           <img src={`${import.meta.env.BASE_URL}images/common/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />
@@ -164,7 +164,7 @@ const ServiceScope = () => {
       </div>
 
       {/* Marquee 滚动区域 */}
-      <div className="max-w-[1280px] mx-auto px-[64px] flex flex-col gap-[12px]">
+      <div className="max-w-[1440px] mx-auto px-[100px] flex flex-col gap-[12px]">
         <MarqueeRow items={[...ROW_1]} />
         <MarqueeRow items={[...ROW_2]} reverse />
       </div>

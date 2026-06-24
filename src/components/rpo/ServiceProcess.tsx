@@ -83,7 +83,7 @@ const ServiceProcess = () => {
         <div className="absolute top-[104px] right-[152px] w-[256px] h-[256px] rounded-full blur-[32px]" style={{ backgroundImage: 'linear-gradient(135deg, rgba(74,131,242,0.06) 0%, rgba(74,131,242,0) 100%)' }} />
         <div className="absolute bottom-[208px] left-[95px] w-[224px] h-[224px] rounded-full blur-[32px]" style={{ backgroundImage: 'linear-gradient(-45deg, rgba(47,109,246,0.05) 0%, rgba(47,109,246,0) 100%)' }} />
 
-        <div className="relative h-full max-w-[1280px] mx-auto px-[64px] flex flex-col">
+        <div className="relative h-full max-w-[1440px] mx-auto px-[100px] flex flex-col">
           {/* 标题区 */}
           <div className="flex items-center justify-center pt-[64px] pb-[32px]">
             <img src={`${import.meta.env.BASE_URL}images/common/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />

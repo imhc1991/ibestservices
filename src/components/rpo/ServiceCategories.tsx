@@ -36,7 +36,7 @@ const ServiceCategories = () => {
         className="absolute top-[200px] right-[-120px] w-[380px] h-[380px] pointer-events-none"
       />
 
-      <div className="relative max-w-[1280px] mx-auto px-[160px]">
+      <div className="relative max-w-[1440px] mx-auto px-[100px]">
         {/* 区块标题 */}
         <div className="flex flex-col items-center gap-[64px]">
           <div className="flex items-center justify-center">

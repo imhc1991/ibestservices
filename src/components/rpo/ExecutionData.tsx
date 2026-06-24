@@ -104,7 +104,7 @@ const ExecutionData = () => {
         <img src={`${import.meta.env.BASE_URL}images/ExecutionData/bg-image-16.png`} alt="" className="w-full h-full object-cover" />
       </div>
 
-      <div className="relative max-w-[1280px] mx-auto px-[64px]">
+      <div className="relative max-w-[1440px] mx-auto px-[100px]">
         {/* 标题区 */}
         <div className="flex items-center justify-center mb-[65px]">
           <img src={`${import.meta.env.BASE_URL}images/ExecutionData/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />

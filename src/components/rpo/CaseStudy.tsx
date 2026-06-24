@@ -15,7 +15,7 @@ const CaseStudy = () => {
         />
       </div>
 
-      <div className="relative max-w-[1280px] mx-auto px-[64px] flex flex-col gap-[64px]">
+      <div className="relative max-w-[1440px] mx-auto px-[100px] flex flex-col gap-[64px]">
         {/* 标题区 */}
         <div className="flex items-center justify-center min-w-[642px]">
           <img src={`${import.meta.env.BASE_URL}images/common/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />

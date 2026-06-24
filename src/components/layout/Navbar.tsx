@@ -66,7 +66,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 h-[60px] bg-white/40 backdrop-blur-sm">
-      <div className="flex items-center justify-between h-full w-full max-w-[1593px] mx-auto px-4">
+      <div className="flex items-center justify-between h-full w-full max-w-[1440px] mx-auto px-[100px]">
         {/* Logo 区域 - 精确尺寸 w-[309px] */}
         <Link to="/" className="flex items-center gap-[16px] shrink-0">
           <img src={logo} alt="百得思维" className="w-[87px] h-[36px] object-contain" />

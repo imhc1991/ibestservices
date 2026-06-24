@@ -7,16 +7,16 @@ const HeroBanner = () => {
       }}
     >
       {/* 背景插图 */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
         <img
           src={`${import.meta.env.BASE_URL}images/HeroBanner/hero-bg.png`}
           alt=""
-          className="w-[1920px] max-w-none h-auto"
+          className="w-full min-w-[1440px] max-w-[1920px] h-auto"
         />
       </div>
 
       {/* 内容区 */}
-      <div className="relative max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 lg:py-[144px]">
+      <div className="relative max-w-[1440px] mx-auto px-[100px] py-20 lg:py-[144px]">
         <div className="max-w-[540px] flex flex-col gap-8">
           {/* 标题区 */}
           <div className="flex flex-col gap-5">

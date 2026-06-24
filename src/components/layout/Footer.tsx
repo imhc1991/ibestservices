@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer className="relative bg-[#37405E] text-white overflow-hidden">
       <div
-        className="relative w-[1394px] max-w-full mx-auto flex items-start py-[65px]"
+        className="relative w-full max-w-[1440px] mx-auto flex items-start py-[65px] px-[100px]"
       >
         {/* 背景图 */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

@@ -14,7 +14,7 @@ const DETAILS = [
 const ProjectRequirements = () => {
   return (
     <section className="relative py-[96px] bg-[#f8faff]">
-      <div className="max-w-[1280px] mx-auto px-[64px]">
+      <div className="max-w-[1440px] mx-auto px-[100px]">
         {/* 标题区 */}
         <div className="flex items-center justify-center mb-[56px]">
           <img src={`${import.meta.env.BASE_URL}images/common/title-deco-left.png`} alt="" className="w-[112px] h-[21px]" />
