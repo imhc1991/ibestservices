@@ -49,7 +49,7 @@ const CaseStudyDark = () => {
                   className="text-[26px] font-semibold leading-[32px] bg-clip-text text-transparent bg-center bg-cover bg-no-repeat"
                   style={{
                     fontFamily: '"PingFang SC", -apple-system-font, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif',
-                    backgroundImage: 'url(images/CaseStudyDark/gradient-text.png")'
+                    backgroundImage: `url("${import.meta.env.BASE_URL}images/CaseStudyDark/gradient-text.png")`
                   }}
                 >
                   亚太地区某智能语音与人工智能龙头企业
