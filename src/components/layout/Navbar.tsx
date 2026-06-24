@@ -93,7 +93,8 @@ const Navbar = () => {
                       {item.label}
                     </button>
                     {activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-2 w-52 bg-white border border-gray-200 rounded-lg shadow-lg">
+                      <div className="absolute top-full left-0 pt-2 w-52">
+                        <div className="bg-white border border-gray-200 rounded-lg shadow-lg">
                         {item.children.map((child) => (
                           <div
                             key={child.label}
@@ -131,6 +132,7 @@ const Navbar = () => {
                             )}
                           </div>
                         ))}
+                        </div>
                       </div>
                     )}
                   </>
