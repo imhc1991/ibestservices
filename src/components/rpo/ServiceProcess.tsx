@@ -110,10 +110,10 @@ const ServiceProcess = () => {
               <button
                 key={phase}
                 onClick={() => scrollToPhase(index)}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-400 ${
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-400 cursor-pointer ${
                   index === activePhase
-                    ? 'bg-[#4a83f2] text-white'
-                    : 'bg-white border border-[#e5e7eb] text-[#606266]/50'
+                    ? 'bg-[#4a83f2] text-white hover:bg-[#3568c7]'
+                    : 'bg-white border border-[#e5e7eb] text-[#606266]/50 hover:border-[#4a83f2]/40 hover:text-[#4a83f2]'
                 }`}
               >
                 {phase}
@@ -144,7 +144,7 @@ const ServiceProcess = () => {
                       <button
                         key={phase}
                         onClick={() => scrollToPhase(index)}
-                        className="flex items-center gap-[16px] text-left group transition-all duration-300"
+                        className="flex items-center gap-[16px] text-left group transition-all duration-300 cursor-pointer hover:opacity-80"
                       >
                         {/* 圆点指示器 */}
                         <div className={`relative flex-shrink-0 w-[16px] h-[16px] rounded-full border-2 transition-all duration-400 ${
