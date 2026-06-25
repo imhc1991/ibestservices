@@ -23,8 +23,8 @@ const Glory = () => {
         </div>
 
         {/* 荣誉卡片 */}
-        <div className="group bg-white border border-[#e5e7eb] rounded-[12px] py-[41px] px-[256px] transition-all duration-400 ease-out hover:-translate-y-2 hover:border-[#4a83f2]/40 hover:shadow-[0_12px_32px_-4px_rgba(74,131,242,0.15)]">
-          <div className="max-w-[640px] w-[640px] h-[303px] relative">
+        <div className="flex justify-center bg-white border border-[#e5e7eb] rounded-[12px] py-[41px] px-[256px] transition-all duration-400 ease-out hover:-translate-y-2 hover:border-[#4a83f2]/40 hover:shadow-[0_12px_32px_-4px_rgba(74,131,242,0.15)]">
+          <div className="max-w-[640px] w-full h-[303px] relative">
             {/* 图标 */}
             <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[120px] h-[120px] transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-1">
               <img src={`${import.meta.env.BASE_URL}images/Glory/icon.png`} alt="" className="w-full h-full object-contain" />

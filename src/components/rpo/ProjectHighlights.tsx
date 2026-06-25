@@ -146,7 +146,7 @@ const ProjectHighlights = () => {
         </div>
 
         {/* 亮点网格 - 2列3行，滚动载入动画 */}
-        <div className="grid grid-cols-2 gap-x-[48px] gap-y-[40px]">
+        <div className="grid grid-cols-2 gap-x-[48px] gap-y-[40px] px-[128px]">
           {HIGHLIGHTS.map((item, index) => (
             <div
               key={index}
