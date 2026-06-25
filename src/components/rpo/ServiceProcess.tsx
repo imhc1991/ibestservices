@@ -144,7 +144,7 @@ const ServiceProcess = () => {
                       <button
                         key={phase}
                         onClick={() => scrollToPhase(index)}
-                        className="flex items-center gap-[16px] text-left group transition-all duration-300 cursor-pointer hover:opacity-80"
+                        className="flex items-center gap-[16px] text-left group transition-all duration-300 cursor-pointer"
                       >
                         {/* 圆点指示器 */}
                         <div className={`relative flex-shrink-0 w-[16px] h-[16px] rounded-full border-2 transition-all duration-400 ${
@@ -156,7 +156,7 @@ const ServiceProcess = () => {
                         }`} />
 
                         {/* 文字 */}
-                        <div className="flex flex-col">
+                        <div className="flex flex-col group-hover:opacity-70 transition-opacity duration-300">
                           <span className={`text-[16px] font-medium leading-[24px] transition-all duration-400 ${
                             isActive
                               ? 'text-[#4a83f2]'
